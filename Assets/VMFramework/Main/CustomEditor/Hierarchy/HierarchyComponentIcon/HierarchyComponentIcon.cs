@@ -20,8 +20,7 @@ namespace VMFramework.Editor
         {
             get
             {
-                var setting = GameCoreSetting
-                    .hierarchyComponentIconGeneralSetting;
+                var setting = GameCoreSetting.hierarchyGeneralSetting;
 
                 if (setting != null)
                 {
@@ -36,8 +35,7 @@ namespace VMFramework.Editor
         {
             get
             {
-                var setting = GameCoreSetting
-                    .hierarchyComponentIconGeneralSetting;
+                var setting = GameCoreSetting.hierarchyGeneralSetting;
 
                 if (setting != null)
                 {
@@ -45,17 +43,13 @@ namespace VMFramework.Editor
                 }
 
                 return DEFAULT_ICON_SIZE;
-
             }
         }
 
-        private static HashSet<Type> hideTypes =
-            new()
-            {
-                typeof(Transform),
-                typeof(ParticleSystemRenderer),
-                typeof(CanvasRenderer),
-            };
+        private static HashSet<Type> hideTypes = new()
+        {
+            typeof(Transform), typeof(ParticleSystemRenderer), typeof(CanvasRenderer),
+        };
 
         private static Transform OffsetObject = null;
         private static int Offset = 0;
@@ -115,8 +109,8 @@ namespace VMFramework.Editor
                 if (texture)
                 {
                     GUI.DrawTexture(
-                        new Rect(rect.width - (iconSize + 1) * (i + 1), rect.y + y,
-                            iconSize, iconSize), texture);
+                        new Rect(rect.width - (iconSize + 1) * (i + 1), rect.y + y, iconSize, iconSize),
+                        texture);
                 }
             }
 
@@ -127,24 +121,20 @@ namespace VMFramework.Editor
                 if (texture)
                 {
                     GUI.DrawTexture(
-                        new Rect(
-                            rect.width - (iconSize + 1) * (components.Count - 1 + 1),
-                            rect.y + y, iconSize, iconSize),
-                        texture);
+                        new Rect(rect.width - (iconSize + 1) * (components.Count - 1 + 1), rect.y + y,
+                            iconSize, iconSize), texture);
                 }
             }
             else if (components.Count > maxIconNum)
             {
                 GUIStyle style = new GUIStyle(GUI.skin.label)
                 {
-                    fontSize = 9,
-                    alignment = TextAnchor.MiddleCenter
+                    fontSize = 9, alignment = TextAnchor.MiddleCenter
                 };
 
                 if (GUI.Button(
-                        new Rect(rect.width - (iconSize + 2) * (maxIconNum + 1),
-                            rect.y + y, 22, iconSize), "•••",
-                        style))
+                        new Rect(rect.width - (iconSize + 2) * (maxIconNum + 1), rect.y + y, 22, iconSize),
+                        "•••", style))
                 {
                     if (OffsetObject != obj.transform)
                     {

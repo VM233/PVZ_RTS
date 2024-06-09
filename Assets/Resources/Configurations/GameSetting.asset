@@ -59,9 +59,7 @@ MonoBehaviour:
     type: 2}
   gameEditorGeneralSetting: {fileID: 11400000, guid: 489caa3cf5352174795c0a677a9ed191,
     type: 2}
-  colorfulHierarchyGeneralSetting: {fileID: 11400000, guid: 3d2662712e8e9ef4d8b9c719cc3f3356,
-    type: 2}
-  hierarchyComponentIconGeneralSetting: {fileID: 11400000, guid: 8f38b55f23210874cb1962afbe594a4a,
+  hierarchyGeneralSetting: {fileID: 11400000, guid: 3d2662712e8e9ef4d8b9c719cc3f3356,
     type: 2}
   textureImporterGeneralSetting: {fileID: 11400000, guid: 3930381c1d9766d49b6f637eb9900cb7,
     type: 2}
@@ -70,4 +68,6 @@ MonoBehaviour:
   mapCoreGeneralSetting: {fileID: 11400000, guid: 10f498ff82b332a48a281e57bce73a96,
     type: 2}
   extendedRuleTileGeneralSetting: {fileID: 11400000, guid: 386fd0d1f4f66a644aa98e41f5da96a5,
+    type: 2}
+  entityGeneralSetting: {fileID: 11400000, guid: 872148890b014774bb074a9657116dec,
     type: 2}

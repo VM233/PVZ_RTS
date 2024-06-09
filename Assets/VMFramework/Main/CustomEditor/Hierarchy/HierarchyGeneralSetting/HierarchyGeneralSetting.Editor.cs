@@ -4,7 +4,7 @@ using VMFramework.Core.Editor;
 
 namespace VMFramework.Editor
 {
-    public partial class ColorfulHierarchyGeneralSetting
+    public partial class HierarchyGeneralSetting
     {
         protected override void OnInspectorInit()
         {

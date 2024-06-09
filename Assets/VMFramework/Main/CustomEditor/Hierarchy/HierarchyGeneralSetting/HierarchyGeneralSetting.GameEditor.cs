@@ -6,9 +6,9 @@ using VMFramework.Localization;
 
 namespace VMFramework.Editor
 {
-    public partial class ColorfulHierarchyGeneralSetting : IGameEditorMenuTreeNode
+    public partial class HierarchyGeneralSetting : IGameEditorMenuTreeNode
     {
-        string INameOwner.name => "Colorful Hierarchy";
+        string INameOwner.name => "Hierarchy";
 
         string IGameEditorMenuTreeNode.folderPath => GameEditorNames.EDITOR_CATEGORY;
 

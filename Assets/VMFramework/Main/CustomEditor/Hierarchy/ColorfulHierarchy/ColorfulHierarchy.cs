@@ -17,7 +17,7 @@ namespace VMFramework.Editor
 
         private static void OnHierarchyWindow(int instanceID, Rect selectionRect)
         {
-            var generalSetting = GameCoreSetting.colorfulHierarchyGeneralSetting;
+            var generalSetting = GameCoreSetting.hierarchyGeneralSetting;
 
             if (generalSetting == null)
             {
