@@ -27,5 +27,6 @@ MonoBehaviour:
   initialGamePrefabWrappers:
   - {fileID: 11400000, guid: 502df8840fe4a1444ba4ad9eb89d70e6, type: 2}
   - {fileID: 11400000, guid: d340b748f3ae63845af6eb70220c74f9, type: 2}
+  - {fileID: 11400000, guid: 63d7167bf0114604f9d79f87ceb8a0b9, type: 2}
   <defaultGameType>k__BackingField: 
   updateInterval: 0.2

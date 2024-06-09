@@ -19,7 +19,7 @@ namespace VMFramework.Editor.GameEditor
         private readonly AuxiliaryTools auxiliaryTools = new();
 
         [MenuItem("Tools/" + GameEditorNames.GAME_EDITOR_NAME + " #G")]
-        [Shortcut("Open " + GameEditorNames.GAME_EDITOR_NAME, KeyCode.G, ShortcutModifiers.Shift)]
+        // [Shortcut("Open " + GameEditorNames.GAME_EDITOR_NAME, KeyCode.G, ShortcutModifiers.Shift)]
         private static void OpenWindow()
         {
             GameCoreSettingFile.CheckGlobal();
