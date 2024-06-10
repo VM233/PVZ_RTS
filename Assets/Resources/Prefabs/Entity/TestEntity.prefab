@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6720313403790754634}
   - component: {fileID: 2312143127584071942}
+  - component: {fileID: 725438577219867071}
   - component: {fileID: 6543127695901927224}
+  - component: {fileID: 772563156209256100}
   m_Layer: 0
   m_Name: TestEntity
   m_TagString: Untagged
@@ -50,6 +52,27 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 6543127695901927224}
   _networkObjectCache: {fileID: 6543127695901927224}
   <graphicsTransform>k__BackingField: {fileID: 6587045423061038683}
+--- !u!65 &725438577219867071
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890629056538547541}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6543127695901927224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +119,21 @@ MonoBehaviour:
   <SpawnableCollectionId>k__BackingField: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 3381072818264231653
+--- !u!114 &772563156209256100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890629056538547541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee0b81c04124869408e3cb1e36cd9ade, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  draggable: 0
+  dragButton: 1
+  <owner>k__BackingField: {fileID: 6720313403790754634}
 --- !u!1 &7010734204993398499
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,9 @@
 {
     public enum GameManagerType
     {
-        Entity
+        Entity,
+        Item,
+        UI,
+        Camera
     }
 }

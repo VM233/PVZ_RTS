@@ -7,7 +7,7 @@ namespace PVZRTS.Entities
 {
     public partial class EntityConfig : IGameEditorMenuTreeNode
     {
-        public Icon icon
+        Icon IGameEditorMenuTreeNode.icon
         {
             get
             {

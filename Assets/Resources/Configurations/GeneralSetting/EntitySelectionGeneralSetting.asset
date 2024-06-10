@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8b2dfd0631277541a02892c06ac821d, type: 3}
-  m_Name: ColliderMouseEventGeneralSetting
+  m_Script: {fileID: 11500000, guid: f108c2b20d4d4c6da4fad2a53b384d08, type: 3}
+  m_Name: EntitySelectionGeneralSetting
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -24,8 +24,8 @@ MonoBehaviour:
   dataFolderRelativePath: Configurations
   defaultJSONFileSuffix: txt
   <defaultLocalizationTableName>k__BackingField: 
-  dimensionsDetectPriority: 0
-  detectDistance2D: 15.4
-  detectLayerMask:
-    serializedVersion: 2
-    m_Bits: 55
+  entitySelectionPrefab: {fileID: 619548018799318875, guid: b1bba9922ed33c0458dabfff95981039,
+    type: 3}
+  selectionYOffset: 0.05
+  textureOffsetRollSpeed: 3
+  terrainLayer: 9

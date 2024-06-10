@@ -71,3 +71,5 @@ MonoBehaviour:
     type: 2}
   entityGeneralSetting: {fileID: 11400000, guid: 872148890b014774bb074a9657116dec,
     type: 2}
+  entitySelectionGeneralSetting: {fileID: 11400000, guid: c4c9b50fe24a17946a6d0205e68ff724,
+    type: 2}
