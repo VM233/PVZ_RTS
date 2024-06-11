@@ -4,7 +4,7 @@ using VMFramework.Procedure;
 namespace VMFramework.Cameras
 {
     [ManagerCreationProvider(ManagerType.EnvironmentCore)]
-    public class CameraManager : ManagerBehaviour<CameraManager>
+    public sealed class CameraManager : ManagerBehaviour<CameraManager>
     {
         [SerializeField]
         private Camera _mainCamera;
