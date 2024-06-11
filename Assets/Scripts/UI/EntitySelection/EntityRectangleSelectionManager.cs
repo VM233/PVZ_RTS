@@ -4,6 +4,7 @@ using PVZRTS.Entities;
 using PVZRTS.GameCore;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using VMFramework.Core;
 using VMFramework.Procedure;
 using VMFramework.Timers;
@@ -20,22 +21,20 @@ namespace PVZRTS.UI
 
         private static float offsetX = 0;
         
-        [ShowInInspector]
-        private static LineRenderer lineRenderer;
-        
-        [ShowInInspector]
-        private static Material lineMaterial;
+        [SerializeField]
+        private LineRenderer lineRenderer;
 
-        private static readonly int mainTex = Shader.PropertyToID("_MainTex");
+        [SerializeField]
+        private Camera renderCamera;
+        
+        [SerializeField]
+        private DecalProjector decalProjector;
 
         protected override void OnBeforeInit()
         {
             base.OnBeforeInit();
-
-            var selection = Instantiate(GameSetting.entitySelectionGeneralSetting.entitySelectionPrefab);
             
-            lineRenderer = selection.GetComponent<LineRenderer>();
-            lineMaterial = lineRenderer.material;
+            lineRenderer.positionCount = 4;
             
             UpdateDelegateManager.AddUpdateDelegate(UpdateType.Update, _Update);
         }
@@ -65,7 +64,8 @@ namespace PVZRTS.UI
             {
                 if (isSelecting)
                 {
-                    var (leftBottom, rightTop) = GetSelectionBox();
+                    var leftBottom = startPos.Min(endPos);
+                    var rightTop = startPos.Max(endPos);
                     var center = (leftBottom + rightTop) / 2;
                     var extents = (rightTop - leftBottom) / 2;
                     extents.y += 10f;
@@ -91,31 +91,29 @@ namespace PVZRTS.UI
             {
                 lineRenderer.enabled = true;
                 
-                var (leftBottom, rightTop) = GetSelectionBox();
-                leftBottom += new Vector3(0, GameSetting.entitySelectionGeneralSetting.selectionYOffset, 0);
-                rightTop += new Vector3(0, GameSetting.entitySelectionGeneralSetting.selectionYOffset, 0);
-
-                lineRenderer.positionCount = 4;
-                lineRenderer.SetPosition(0, leftBottom);
-                lineRenderer.SetPosition(1, new Vector3(rightTop.x, (leftBottom.y + rightTop.y) / 2, leftBottom.z));
-                lineRenderer.SetPosition(2, rightTop);
-                lineRenderer.SetPosition(3, new Vector3(leftBottom.x, (leftBottom.y + rightTop.y) / 2, rightTop.z));
+                var size = (startPos - endPos).Abs().XZ();
+                var extents = size / 2;
+                var center = (startPos + endPos) / 2;
+                var maxSize = size.Max();
                 
-                lineMaterial.SetTextureOffset(mainTex, new Vector2(offsetX, 0));
-                offsetX += Time.deltaTime * GameSetting.entitySelectionGeneralSetting.textureOffsetRollSpeed;
+                var leftBottom = new Vector3(-extents.x, 0, -extents.y);
+                var leftTop = new Vector3(-extents.x, 0, extents.y);
+                var rightBottom = new Vector3(extents.x, 0, -extents.y);
+                var rightTop = new Vector3(extents.x, 0, extents.y);
+                
+                lineRenderer.SetPosition(0, leftBottom);
+                lineRenderer.SetPosition(1, rightBottom);
+                lineRenderer.SetPosition(2, rightTop);
+                lineRenderer.SetPosition(3, leftTop);
+
+                renderCamera.orthographicSize = extents.Max() + 0.05f;
+                decalProjector.size = new Vector3(maxSize, maxSize, 10);
+                decalProjector.transform.position = center;
             }
             else
             {
                 lineRenderer.enabled = false;
             }
-        }
-
-        private static (Vector3 leftBottom, Vector3 rightTop) GetSelectionBox()
-        {
-            var leftBottom = startPos.Min(endPos);
-            var rightTop = startPos.Max(endPos);
-            
-            return (leftBottom, rightTop);
         }
     }
 }
