@@ -5,6 +5,7 @@
         Entity,
         Item,
         UI,
-        Camera
+        Camera,
+        Damage
     }
 }

@@ -10,6 +10,7 @@ namespace PVZRTS.Entities
 {
     public partial class EntityController : NetworkBehaviour
     {
+        [ShowInInspector]
         public IEntity entity { get; private set; }
         
         [field: Required]

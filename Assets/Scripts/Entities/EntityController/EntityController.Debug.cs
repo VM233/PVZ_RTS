@@ -1,6 +1,7 @@
 ﻿#if UNITY_EDITOR
 using FishNet.Object;
 using Sirenix.OdinInspector;
+using VMFramework.GameLogicArchitecture;
 
 namespace PVZRTS.Entities
 {
@@ -11,6 +12,15 @@ namespace PVZRTS.Entities
         private void DestroyThisEntity()
         {
             EntityManager.DestroyEntity(entity);
+        }
+
+        [Button]
+        [Server]
+        private void DuplicateThisEntity()
+        {
+            var newEntity = entity.GetClone();
+            
+            EntityManager.CreateEntity(newEntity, transform.position);
         }
     }
 }

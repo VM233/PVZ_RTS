@@ -73,3 +73,5 @@ MonoBehaviour:
     type: 2}
   entitySelectionGeneralSetting: {fileID: 11400000, guid: c4c9b50fe24a17946a6d0205e68ff724,
     type: 2}
+  damageGeneralSetting: {fileID: 11400000, guid: cebe6a2bed7d98641b8d917580fb89e9,
+    type: 2}

@@ -74,6 +74,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a80dc11424bb5884bb20272bfccaeed1, type: 2}
   - {fileID: 11400000, guid: 2551eb707cd2b9b42920346a7bb82760, type: 2}
   - {fileID: 11400000, guid: 7453b5f6a11d6694d8fd626b48fd76cf, type: 2}
+  - {fileID: 11400000, guid: 53b2b2294b685874d8f5553502da42eb, type: 2}
   <defaultGameType>k__BackingField: 
   container:
     containerID: $UI

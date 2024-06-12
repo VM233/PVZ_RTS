@@ -19,6 +19,10 @@ MonoBehaviour:
     m_Key: TestEntityName
     m_Metadata:
       m_Items: []
+  - m_Id: 1202000426545152
+    m_Key: TestHealthOwnerEntityName
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

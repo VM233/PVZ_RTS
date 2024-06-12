@@ -10,6 +10,8 @@ namespace PVZRTS.Entities
     {
         public override Type gameItemType => typeof(Entity);
 
+        protected override string idSuffix => "entity";
+
         [TabGroup(TAB_GROUP_NAME, BASIC_CATEGORY)]
         [MinValue(0), MaxValue(100)]
         public int prewarmCount = 0;

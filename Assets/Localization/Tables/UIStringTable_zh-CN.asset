@@ -30,6 +30,10 @@ MonoBehaviour:
     m_Localized: Universal Ui Toolkit Tooltip
     m_Metadata:
       m_Items: []
+  - m_Id: 1384247804932096
+    m_Localized: Popup Health
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -9,6 +9,8 @@ namespace VMFramework.Properties
     public struct BaseIntProperty<TOwner> : IFormattable, IComparable<BaseIntProperty<TOwner>>
         where TOwner : class
     {
+        public readonly TOwner owner;
+        
         private int _value;
 
         [ShowInInspector]
@@ -25,8 +27,6 @@ namespace VMFramework.Properties
                 OnValueChanged?.Invoke(owner, oldHealth, _value);
             }
         }
-        
-        public readonly TOwner owner;
 
         public event Action<TOwner, int, int> OnValueChanged;
 

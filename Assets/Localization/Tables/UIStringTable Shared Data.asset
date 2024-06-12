@@ -27,6 +27,10 @@ MonoBehaviour:
     m_Key: UniversalUiToolkitTooltipUiName
     m_Metadata:
       m_Items: []
+  - m_Id: 1384247804932096
+    m_Key: PopupHealthUiName
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
