@@ -23,7 +23,7 @@ MonoBehaviour:
     SerializationNodes: []
   dataFolderRelativePath: Configurations
   defaultJSONFileSuffix: txt
-  <defaultLocalizationTableName>k__BackingField: 
+  <defaultLocalizationTableName>k__BackingField: DebugEntryStringTable
   initialGamePrefabWrappers:
   - {fileID: 11400000, guid: 502df8840fe4a1444ba4ad9eb89d70e6, type: 2}
   - {fileID: 11400000, guid: d340b748f3ae63845af6eb70220c74f9, type: 2}

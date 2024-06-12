@@ -10,16 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
-  m_Name: EntityStringTable_zh-CN
+  m_Name: DebugEntryStringTable_en-US
   m_EditorClassIdentifier: 
   m_LocaleId:
-    m_Code: zh-CN
-  m_SharedData: {fileID: 11400000, guid: b0a2db27853df47438dca84e17866d0d, type: 2}
+    m_Code: en-US
+  m_SharedData: {fileID: 11400000, guid: 3323cafc781b515438d8d342b3861141, type: 2}
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 1036827183132672
-    m_Localized: Test Entity
+  - m_Id: 71826518016
+    m_Localized: Current Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84195520512
+    m_Localized: Fps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102306525184
+    m_Localized: Ping
     m_Metadata:
       m_Items: []
   references:

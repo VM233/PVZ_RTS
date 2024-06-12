@@ -10,24 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: EntityStringTable Shared Data
+  m_Name: DebugEntryStringTable Shared Data
   m_EditorClassIdentifier: 
-  m_TableCollectionName: EntityStringTable
-  m_TableCollectionNameGuidString: b0a2db27853df47438dca84e17866d0d
+  m_TableCollectionName: DebugEntryStringTable
+  m_TableCollectionNameGuidString: 3323cafc781b515438d8d342b3861141
   m_Entries:
-  - m_Id: 1036827183132672
-    m_Key: TestEntityName
+  - m_Id: 71826518016
+    m_Key: CurrentLanguageDebugEntryName
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84195520512
+    m_Key: FpsDebugEntryName
+    m_Metadata:
+      m_Items: []
+  - m_Id: 102306525184
+    m_Key: PingDebugEntryName
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 8590415284127662191
+    rid: 8590415352982929479
   references:
     version: 2
     RefIds:
-    - rid: 8590415284127662191
+    - rid: 8590415352982929479
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
         asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1717914387520
+        m_CustomEpoch: 1718161704928
