@@ -13,15 +13,13 @@ namespace VMFramework.Properties
         [HideInInspector]
         public Type filterType;
 
-        [LabelText("属性")]
         [ValueDropdown(nameof(GetPropertyNameList))]
         [IsNotNullOrEmpty]
         public string propertyID;
 
         [HideInEditorMode]
-        public GameProperty property;
+        public IGameProperty property;
 
-        [LabelText("是否静态")]
         public bool isStatic;
 
         #region GUI
@@ -46,7 +44,7 @@ namespace VMFramework.Properties
         {
             base.OnInit();
 
-            property = GamePrefabManager.GetGamePrefabStrictly<GameProperty>(propertyID);
+            property = GamePrefabManager.GetGamePrefabStrictly<IGameProperty>(propertyID);
         }
     }
 }

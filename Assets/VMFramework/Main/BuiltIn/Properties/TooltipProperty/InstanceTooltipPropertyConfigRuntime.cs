@@ -2,7 +2,7 @@
 {
     public struct InstanceTooltipPropertyConfigRuntime
     {
-        public GameProperty property;
+        public IGameProperty property;
         public bool isStatic;
     }
 }

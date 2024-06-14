@@ -29,13 +29,7 @@ namespace VMFramework.Properties
         [TabGroup(TAB_GROUP_NAME, PROPERTY_SETTING_CATEGORY)]
         [ShowInInspector]
         [ReadOnly]
-        private static Dictionary<Type, List<GameProperty>> propertyConfigs = new();
-
-        [TabGroup(TAB_GROUP_NAME, TOOLTIP_SETTING_CATEGORY)]
-        [GamePrefabID(typeof(UIToolkitTracingTooltipPreset))]
-        [IsNotNullOrEmpty]
-        [JsonProperty]
-        public string tooltipID;
+        private static Dictionary<Type, List<IGameProperty>> propertyConfigs = new();
 
         #region Init & Check
 
@@ -45,7 +39,7 @@ namespace VMFramework.Properties
 
             propertyConfigs.Clear();
 
-            foreach (var propertyConfig in GamePrefabManager.GetAllGamePrefabs<GameProperty>())
+            foreach (var propertyConfig in GamePrefabManager.GetAllGamePrefabs<IGameProperty>())
             {
                 if (propertyConfigs.ContainsKey(propertyConfig.targetType) == false)
                 {
@@ -58,10 +52,10 @@ namespace VMFramework.Properties
 
         #endregion
 
-        [Button(nameof(GetPropertyConfigs)), TabGroup(TAB_GROUP_NAME, PROPERTY_SETTING_CATEGORY)]
-        public static List<GameProperty> GetPropertyConfigs(Type targetType)
+        [Button, TabGroup(TAB_GROUP_NAME, PROPERTY_SETTING_CATEGORY)]
+        public static List<IGameProperty> GetPropertyConfigs(Type targetType)
         {
-            var result = new List<GameProperty>();
+            var result = new List<IGameProperty>();
 
             if (propertyConfigs.Count == 0)
             {
@@ -87,7 +81,7 @@ namespace VMFramework.Properties
                 yield break;
             }
             
-            foreach (var config in GamePrefabManager.GetAllGamePrefabs<GameProperty>())
+            foreach (var config in GamePrefabManager.GetAllGamePrefabs<IGameProperty>())
             {
                 if (config is { isActive: true } && targetType.IsDerivedFrom(config.targetType, true))
                 {
