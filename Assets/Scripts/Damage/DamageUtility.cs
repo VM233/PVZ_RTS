@@ -1,4 +1,5 @@
 ﻿using PVZRTS.Damage;
+using PVZRTS.Properties;
 using UnityEngine;
 using VMFramework.Core;
 

@@ -3,7 +3,7 @@ using PVZRTS.Properties;
 
 namespace PVZRTS.Entities
 {
-    public interface IHealthOwnerEntity : IEntity, IHealthOwner, IDefenseOwner, IDamageable
+    public interface ICreature : IHealthOwnerEntity, IDamageSource, IAttackOwner
     {
         
     }

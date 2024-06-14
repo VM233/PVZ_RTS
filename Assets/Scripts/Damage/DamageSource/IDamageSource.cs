@@ -7,10 +7,7 @@
         /// </summary>
         /// <param name="target"></param>
         /// <param name="packet"></param>
-        public void ProduceDamagePacket(IDamageable target, out DamagePacket packet)
-        {
-            packet = default;
-        }
+        public void ProduceDamagePacket(IDamageable target, out DamagePacket packet);
 
         /// <summary>
         /// 是否可以对目标造成伤害

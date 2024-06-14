@@ -1,7 +1,7 @@
 ﻿using System;
 using VMFramework.Properties;
 
-namespace PVZRTS.Damage
+namespace PVZRTS.Properties
 {
     public interface IDefenseOwner
     {

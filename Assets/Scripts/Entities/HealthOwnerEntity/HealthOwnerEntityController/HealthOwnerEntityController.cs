@@ -1,6 +1,7 @@
 ﻿using System;
 using FishNet.Object.Synchronizing;
 using PVZRTS.Damage;
+using PVZRTS.Properties;
 using VMFramework.Properties;
 
 namespace PVZRTS.Entities

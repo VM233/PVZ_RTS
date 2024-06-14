@@ -1,5 +1,6 @@
 ﻿using System;
 using PVZRTS.Damage;
+using PVZRTS.Properties;
 using Sirenix.OdinInspector;
 using VMFramework.Properties;
 

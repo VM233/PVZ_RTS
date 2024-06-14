@@ -1,4 +1,6 @@
-﻿namespace PVZRTS.Damage
+﻿using PVZRTS.Properties;
+
+namespace PVZRTS.Damage
 {
     public struct DamagePacket
     {
@@ -52,6 +54,18 @@
             this.damageMultiplier = 1;
             this.criticalRate = 0;
             this.criticalDamageMultiplier = 1;
+        }
+
+        public DamagePacket(IDamageSource directSource, IAttackOwner attackOwner)
+        {
+            this.directSource = directSource;
+            this.isReflectedAttack = false;
+            this.isMelee = false;
+            this.physicalDamage = attackOwner.physicalAttack;
+            this.magicalDamage = attackOwner.magicalAttack;
+            this.damageMultiplier = 1;
+            this.criticalRate = attackOwner.criticalRate;
+            this.criticalDamageMultiplier = attackOwner.criticalDamageMultiplier;
         }
     }
 }
