@@ -120,7 +120,7 @@ MonoBehaviour:
       Data: true
     - Name: enableAutoMouseTracing
       Entry: 5
-      Data: false
+      Data: true
     - Name: persistentTracing
       Entry: 5
       Data: true

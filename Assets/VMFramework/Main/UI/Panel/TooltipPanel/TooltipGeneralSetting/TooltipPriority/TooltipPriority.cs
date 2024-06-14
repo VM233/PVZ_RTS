@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using VMFramework.Configuration;
+using VMFramework.Core;
 using VMFramework.GameLogicArchitecture;
 using VMFramework.OdinExtensions;
 
@@ -56,6 +57,12 @@ namespace VMFramework.UI
             switch (priorityType)
             {
                 case TooltipPriorityType.Preset:
+                    if (presetID.IsNullOrEmpty())
+                    {
+                        Debug.LogWarning("No Tooltip Priority Preset ID set.");
+                        return 0;
+                    }
+                    
                     if (GameCoreSetting.tooltipGeneralSetting.tooltipPriorityPresets.TryGetConfigRuntime(
                             presetID, out var config))
                     {

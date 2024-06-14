@@ -5,10 +5,11 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using VMFramework.Core;
 using VMFramework.GameLogicArchitecture;
+using VMFramework.UI;
 
 namespace PVZRTS.Entities
 {
-    public partial class EntityController : NetworkBehaviour
+    public partial class EntityController : NetworkBehaviour, ITooltipProviderController
     {
         [ShowInInspector]
         public IEntity entity { get; private set; }
@@ -16,7 +17,9 @@ namespace PVZRTS.Entities
         [field: Required]
         [field: SerializeField]
         public Transform graphicsTransform { get; private set; }
-        
+
+        public ITooltipProvider provider => entity;
+
         #region Init & Destroy RPC
 
         public override void OnSpawnServer(NetworkConnection connection)
