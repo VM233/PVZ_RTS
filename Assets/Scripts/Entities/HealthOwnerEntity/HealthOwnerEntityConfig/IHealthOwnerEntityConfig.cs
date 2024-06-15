@@ -1,11 +1,9 @@
-﻿namespace PVZRTS.Entities
+﻿using PVZRTS.Properties;
+
+namespace PVZRTS.Entities
 {
-    public interface IHealthOwnerEntityConfig : IEntityConfig
+    public interface IHealthOwnerEntityConfig : IEntityConfig, IDefenseOwnerConfig, IHealthOwnerConfig
     {
-        public int defaultMaxHealth { get; }
         
-        public int defaultDefense { get; }
-        
-        public float defaultDefensePercent { get; }
     }
 }

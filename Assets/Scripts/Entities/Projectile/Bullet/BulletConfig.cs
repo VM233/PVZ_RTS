@@ -1,11 +1,12 @@
-﻿using PVZRTS.Properties;
-using Sirenix.OdinInspector;
+﻿using System;
+using PVZRTS.Properties;
 
 namespace PVZRTS.Entities
 {
-    public class MoveableCreatureConfig : CreatureConfig, IMoveableCreatureConfig
+    public class BulletConfig : EntityConfig, IBulletConfig
     {
-        [TabGroup(TAB_GROUP_NAME, CREATURE_CATEGORY)]
+        public override Type gameItemType => typeof(Bullet);
+
         public float defaultSpeed;
 
         #region Interface Implementation

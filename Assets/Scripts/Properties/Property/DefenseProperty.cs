@@ -14,7 +14,7 @@ namespace PVZRTS.Properties
         public override string GetValueString(object target)
         {
             IDefenseOwner defenseOwner = (IDefenseOwner)target;
-            return defenseOwner.defense.ToString();
+            return defenseOwner.physicalDefense.ToString();
         }
     }
 }

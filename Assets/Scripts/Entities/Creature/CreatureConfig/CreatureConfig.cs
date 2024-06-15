@@ -1,4 +1,5 @@
 ﻿using System;
+using PVZRTS.Properties;
 using Sirenix.OdinInspector;
 
 namespace PVZRTS.Entities
@@ -27,13 +28,13 @@ namespace PVZRTS.Entities
 
         #region Interface Implementation
 
-        int ICreatureConfig.defaultPhysicalAttack => defaultPhysicalAttack;
+        int IAttackOwnerConfig.defaultPhysicalAttack => defaultPhysicalAttack;
 
-        int ICreatureConfig.defaultMagicalAttack => defaultMagicalAttack;
+        int IAttackOwnerConfig.defaultMagicalAttack => defaultMagicalAttack;
 
-        float ICreatureConfig.defaultCriticalRate => defaultCriticalRate;
+        float IAttackOwnerConfig.defaultCriticalRate => defaultCriticalRate;
 
-        float ICreatureConfig.defaultCriticalDamageMultiplier => defaultCriticalDamageMultiplier;
+        float IAttackOwnerConfig.defaultCriticalDamageMultiplier => defaultCriticalDamageMultiplier;
 
         #endregion
     }

@@ -2,7 +2,7 @@
 
 namespace PVZRTS.Entities
 {
-    public interface IMoveableEntityConfig : IEntityConfig, ISpeedOwnerConfig
+    public interface IBulletConfig : IEntityConfig, ISpeedOwnerConfig
     {
         
     }

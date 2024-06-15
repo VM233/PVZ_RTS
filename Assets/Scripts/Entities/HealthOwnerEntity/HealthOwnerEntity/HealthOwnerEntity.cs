@@ -17,7 +17,10 @@ namespace PVZRTS.Entities
         public BaseIntProperty<IHealthOwner> health;
 
         [ShowInInspector]
-        public BaseBoostIntProperty<IDefenseOwner> defense;
+        public BaseBoostIntProperty<IDefenseOwner> physicalDefense;
+
+        [ShowInInspector]
+        public BaseBoostIntProperty<IDefenseOwner> magicalDefense;
         
         [ShowInInspector]
         public BaseFloatProperty<IDefenseOwner> defensePercent;
@@ -29,8 +32,9 @@ namespace PVZRTS.Entities
             maxHealth = new(this, healthOwnerEntityConfig.defaultMaxHealth);
             health = new(this, healthOwnerEntityConfig.defaultMaxHealth);
             
-            defense = new(this, 0);
-            defensePercent = new(this, 0);
+            physicalDefense = new(this, healthOwnerEntityConfig.defaultPhysicalDefense);
+            magicalDefense = new(this, healthOwnerEntityConfig.defaultMagicalDefense);
+            defensePercent = new(this, healthOwnerEntityConfig.defaultDefensePercent);
             
             health.OnValueChanged += OnHealthChanged;
         }
@@ -113,18 +117,32 @@ namespace PVZRTS.Entities
             remove => health.OnValueChanged -= value;
         }
 
-        int IDefenseOwner.defense => defense;
+        int IDefenseOwner.physicalDefense => physicalDefense;
 
-        int IDefenseOwner.defenseBaseValue
+        int IDefenseOwner.physicalDefenseBaseValue
         {
-            get => defense.baseValue;
-            set => defense.baseValue = value;
+            get => physicalDefense.baseValue;
+            set => physicalDefense.baseValue = value;
         }
 
-        float IDefenseOwner.defenseBoostValue
+        float IDefenseOwner.physicalDefenseBoostValue
         {
-            get => defense.boostValue;
-            set => defense.boostValue = value;
+            get => physicalDefense.boostValue;
+            set => physicalDefense.boostValue = value;
+        }
+        
+        int IDefenseOwner.magicalDefense => magicalDefense;
+
+        int IDefenseOwner.magicalDefenseBaseValue
+        {
+            get => magicalDefense.baseValue;
+            set => magicalDefense.baseValue = value;
+        }
+
+        float IDefenseOwner.magicalDefenseBoostValue
+        {
+            get => magicalDefense.boostValue;
+            set => magicalDefense.boostValue = value;
         }
 
         float IDefenseOwner.defensePercent
@@ -133,10 +151,16 @@ namespace PVZRTS.Entities
             set => defensePercent.value = value;
         }
 
-        public event Action<IDefenseOwner, BaseBoostInt, BaseBoostInt> OnDefenseChanged
+        public event Action<IDefenseOwner, BaseBoostInt, BaseBoostInt> OnPhysicalDefenseChanged
         {
-            add => defense.OnValueChanged += value;
-            remove => defense.OnValueChanged -= value;
+            add => physicalDefense.OnValueChanged += value;
+            remove => physicalDefense.OnValueChanged -= value;
+        }
+
+        public event Action<IDefenseOwner, BaseBoostInt, BaseBoostInt> OnMagicalDefenseChanged
+        {
+            add => magicalDefense.OnValueChanged += value;
+            remove => magicalDefense.OnValueChanged -= value;
         }
 
         public event Action<IDefenseOwner, float, float> OnDefensePercentChanged

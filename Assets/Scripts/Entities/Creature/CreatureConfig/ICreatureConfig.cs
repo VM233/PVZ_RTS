@@ -1,13 +1,9 @@
-﻿namespace PVZRTS.Entities
+﻿using PVZRTS.Properties;
+
+namespace PVZRTS.Entities
 {
-    public interface ICreatureConfig : IHealthOwnerEntityConfig
+    public interface ICreatureConfig : IHealthOwnerEntityConfig, IAttackOwnerConfig
     {
-        public int defaultPhysicalAttack { get; }
         
-        public int defaultMagicalAttack { get; }
-        
-        public float defaultCriticalRate { get; }
-        
-        public float defaultCriticalDamageMultiplier { get; }
     }
 }

@@ -169,7 +169,10 @@ MonoBehaviour:
     - Name: defaultMaxHealth
       Entry: 3
       Data: 20
-    - Name: defaultDefense
+    - Name: defaultPhysicalDefense
+      Entry: 3
+      Data: 0
+    - Name: defaultMagicalDefense
       Entry: 3
       Data: 0
     - Name: defaultDefensePercent

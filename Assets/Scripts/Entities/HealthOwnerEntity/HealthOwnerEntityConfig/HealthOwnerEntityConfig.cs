@@ -1,4 +1,5 @@
 ﻿using System;
+using PVZRTS.Properties;
 using Sirenix.OdinInspector;
 
 namespace PVZRTS.Entities
@@ -13,7 +14,11 @@ namespace PVZRTS.Entities
 
         [TabGroup(TAB_GROUP_NAME, BASIC_CATEGORY)]
         [MinValue(0)]
-        public int defaultDefense = 0;
+        public int defaultPhysicalDefense = 0;
+        
+        [TabGroup(TAB_GROUP_NAME, BASIC_CATEGORY)]
+        [MinValue(0)]
+        public int defaultMagicalDefense = 0;
 
         [TabGroup(TAB_GROUP_NAME, BASIC_CATEGORY)]
         [MinValue(0)]
@@ -21,11 +26,13 @@ namespace PVZRTS.Entities
 
         #region Interface Implementation
 
-        int IHealthOwnerEntityConfig.defaultMaxHealth => defaultMaxHealth;
+        int IHealthOwnerConfig.defaultMaxHealth => defaultMaxHealth;
 
-        int IHealthOwnerEntityConfig.defaultDefense => defaultDefense;
-        
-        float IHealthOwnerEntityConfig.defaultDefensePercent => defaultDefensePercent;
+        int IDefenseOwnerConfig.defaultPhysicalDefense => defaultPhysicalDefense;
+
+        int IDefenseOwnerConfig.defaultMagicalDefense => defaultMagicalDefense;
+
+        float IDefenseOwnerConfig.defaultDefensePercent => defaultDefensePercent;
 
         #endregion
     }

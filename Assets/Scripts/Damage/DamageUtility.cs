@@ -15,7 +15,7 @@ namespace PVZRTS.Damage
 
             if (damageable is IDefenseOwner defenseOwner)
             {
-                defense = defenseOwner.defense;
+                defense = defenseOwner.physicalDefense;
                 defensePercent = defenseOwner.defensePercent;
             }
 
