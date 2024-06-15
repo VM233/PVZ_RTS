@@ -43,7 +43,7 @@ MonoBehaviour:
       Data: 3|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: PVZRTS.Entities.HealthOwnerEntity, Assembly-CSharp
+      Data: PVZRTS.Entities.IHealthOwnerEntity, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
@@ -149,7 +149,7 @@ MonoBehaviour:
       Data: 11|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: PVZRTS.Entities.Creature, Assembly-CSharp
+      Data: PVZRTS.Entities.ICreature, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
@@ -297,7 +297,7 @@ MonoBehaviour:
       Data: 22|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: PVZRTS.Entities.MoveableCreature, Assembly-CSharp
+      Data: PVZRTS.Entities.IMoveableCreature, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 

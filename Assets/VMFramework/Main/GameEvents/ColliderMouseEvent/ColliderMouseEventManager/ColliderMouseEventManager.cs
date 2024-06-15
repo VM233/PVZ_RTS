@@ -377,7 +377,7 @@ namespace VMFramework.GameEvents
         {
             Vector3 mousePos = Input.mousePosition;
 
-            if (mousePos.IsInfinity())
+            if (mousePos.IsInfinity() || mousePos.IsNaN())
             {
                 return default;
             }

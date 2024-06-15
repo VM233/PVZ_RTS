@@ -13,17 +13,14 @@ namespace VMFramework.UI
     [PreviewComposite]
     public struct TooltipPriority
     {
-        [PropertyTooltip("优先级类型")]
         [JsonProperty, SerializeField]
         private TooltipPriorityType priorityType;
 
-        [PropertyTooltip("优先级预设")]
         [TooltipPriorityPresetID]
         [ShowIf(nameof(priorityType), TooltipPriorityType.Preset)]
         [JsonProperty, SerializeField]
         private string presetID;
 
-        [PropertyTooltip("优先级")]
         [ShowIf(nameof(priorityType), TooltipPriorityType.Custom)]
         [JsonProperty, SerializeField]
         private int priority;

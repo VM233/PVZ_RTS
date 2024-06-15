@@ -8,7 +8,7 @@ namespace PVZRTS.Entities
 {
     public partial class HealthOwnerEntityController : EntityController
     {
-        protected IHealthOwnerEntity healthOwnerEntity => (IHealthOwnerEntity)entity;
+        public IHealthOwnerEntity healthOwnerEntity => (IHealthOwnerEntity)entity;
 
         private readonly SyncVar<BaseBoostInt> maxHealthOnServer = new();
         
