@@ -18,8 +18,6 @@ namespace PVZRTS.UI
         
         private static Vector3 startPos;
         private static Vector3 endPos;
-
-        private static float offsetX = 0;
         
         [SerializeField]
         private LineRenderer lineRenderer;

@@ -10,22 +10,26 @@ namespace PVZRTS.Damage
         public static void DefaultProcessDamagePacket(this IDamageable damageable, DamagePacket packet,
             out DamageResult result)
         {
-            int defense = 0;
+            int physicalDefense = 0;
+            int magicalDefense = 0;
             float defensePercent = 0;
 
             if (damageable is IDefenseOwner defenseOwner)
             {
-                defense = defenseOwner.physicalDefense;
+                physicalDefense = defenseOwner.physicalDefense;
+                magicalDefense = defenseOwner.magicalDefense;
                 defensePercent = defenseOwner.defensePercent;
             }
 
-            float damageFloat = packet.physicalDamage + packet.magicalDamage;
-            if (damageFloat > 0)
-            {
-                damageFloat -= defense;
-                damageFloat = damageFloat.ClampMin(0);
-                damageFloat *= (1 - defensePercent).Clamp(0, 1);
-            }
+            float physicalDamage = packet.physicalDamage - physicalDefense;
+            float magicalDamage = packet.magicalDamage - magicalDefense;
+            physicalDamage = physicalDamage.ClampMin(0);
+            magicalDamage = magicalDamage.ClampMin(0);
+            
+            float damageFloat = physicalDamage + magicalDamage;
+            
+            damageFloat *= (1 - defensePercent).Clamp(0, 1);
+            
             damageFloat *= packet.damageMultiplier.ClampMin(0);
 
             bool isCritical = false;
@@ -38,7 +42,16 @@ namespace PVZRTS.Damage
                 }
             }
 
-            var damage = damageFloat.Floor();
+            int damage = 0;
+
+            if (damageFloat > 0)
+            {
+                damage = damageFloat.Floor();
+            }
+            else
+            {
+                damage = damageFloat.Ceiling();
+            }
             
             result.healthChange = -damage;
             result.isCritical = isCritical;
