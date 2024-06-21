@@ -6,6 +6,7 @@
         Item,
         UI,
         Camera,
-        Damage
+        Damage,
+        Spell
     }
 }

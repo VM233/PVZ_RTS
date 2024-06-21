@@ -1,37 +1,62 @@
-﻿using System;
+﻿using FishNet;
 using FishNet.Object.Synchronizing;
 using PVZRTS.Damage;
 using PVZRTS.Properties;
+using Sirenix.OdinInspector;
 using VMFramework.Properties;
 
 namespace PVZRTS.Entities
 {
-    public partial class HealthOwnerEntityController : EntityController
+    public partial class HealthOwnerEntityController : EntityController, IDamageableController
     {
         public IHealthOwnerEntity healthOwnerEntity => (IHealthOwnerEntity)entity;
 
+        IDamageable IDamageableController.damageable => healthOwnerEntity;
+
+        [ShowInInspector]
         private readonly SyncVar<BaseBoostInt> maxHealthOnServer = new();
         
+        [ShowInInspector]
         private readonly SyncVar<int> healthOnServer = new();
         
+        [ShowInInspector]
         private readonly SyncVar<BaseBoostInt> physicalDefenseOnServer = new();
         
+        [ShowInInspector]
         private readonly SyncVar<BaseBoostInt> magicalDefenseOnServer = new();
         
+        [ShowInInspector]
         private readonly SyncVar<float> defensePercentOnServer = new();
 
         protected override void OnPreInit()
         {
             base.OnPreInit();
-            
-            healthOwnerEntity.OnMaxHealthChanged += OnMaxHealthChangedOnServer;
-            healthOwnerEntity.OnHealthChanged += OnHealthChangedOnServer;
-            healthOwnerEntity.OnPhysicalDefenseChanged += OnPhysicalDefenseChangedOnServer;
-            healthOwnerEntity.OnMagicalDefenseChanged += OnMagicalDefenseChangedOnServer;
-            healthOwnerEntity.OnDefensePercentChanged += OnDefensePercentChangedOnServer;
+
+            if (InstanceFinder.IsServerStarted)
+            {
+                healthOwnerEntity.OnMaxHealthChanged += OnMaxHealthChangedOnServer;
+                healthOwnerEntity.OnHealthChanged += OnHealthChangedOnServer;
+                healthOwnerEntity.OnPhysicalDefenseChanged += OnPhysicalDefenseChangedOnServer;
+                healthOwnerEntity.OnMagicalDefenseChanged += OnMagicalDefenseChangedOnServer;
+                healthOwnerEntity.OnDefensePercentChanged += OnDefensePercentChangedOnServer;
+            }
         }
 
-        private void Awake()
+        protected override void OnDestruct()
+        {
+            base.OnDestruct();
+
+            if (InstanceFinder.IsServerStarted)
+            {
+                healthOwnerEntity.OnMaxHealthChanged -= OnMaxHealthChangedOnServer;
+                healthOwnerEntity.OnHealthChanged -= OnHealthChangedOnServer;
+                healthOwnerEntity.OnPhysicalDefenseChanged -= OnPhysicalDefenseChangedOnServer;
+                healthOwnerEntity.OnMagicalDefenseChanged -= OnMagicalDefenseChangedOnServer;
+                healthOwnerEntity.OnDefensePercentChanged -= OnDefensePercentChangedOnServer;
+            }
+        }
+
+        protected virtual void Awake()
         {
             maxHealthOnServer.OnChange += OnMaxHealthOnServerChanged;
             healthOnServer.OnChange += OnHealthOnServerChanged;

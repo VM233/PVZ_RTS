@@ -10,10 +10,11 @@ namespace VMFramework.Properties
     /// 用来表示小数类型带增益的属性，其值 = 基值 * 增益
     /// </summary>
     [PreviewComposite]
-    public struct BaseBoostFloatProperty<TOwner> : IFormattable where TOwner : class
+    public struct BaseBoostFloatProperty<TOwner> : IFormattable
+        where TOwner : class
     {
         public readonly TOwner owner;
-        
+
         /// <summary>
         /// 值 = 基值 * 增益
         /// value = baseValue * boostValue
@@ -67,7 +68,7 @@ namespace VMFramework.Properties
                     new(baseValue, boostValue, this.value));
             }
         }
-        
+
         /// <summary>
         /// Parameters : Owner, Previous Value, New Value
         /// </summary>
@@ -81,6 +82,26 @@ namespace VMFramework.Properties
             value = _baseValue * _boostValue;
             value = value.ClampMin(0);
             OnValueChanged = null;
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void SetBaseBoost(float newBaseValue, float newBoostValue)
+        {
+            var oldBaseValue = _baseValue;
+            var oldBoostValue = _boostValue;
+            var oldValue = value;
+            _baseValue = newBaseValue;
+            _boostValue = newBoostValue;
+            value = _baseValue * _boostValue;
+            value = value.ClampMin(0);
+            OnValueChanged?.Invoke(owner, new(oldBaseValue, oldBoostValue, oldValue),
+                new(baseValue, boostValue, value));
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void SetBaseBoost(BaseBoostFloat baseBoostFloat)
+        {
+            SetBaseBoost(baseBoostFloat.baseValue, baseBoostFloat.boostValue);
         }
 
         #region To String
@@ -98,8 +119,11 @@ namespace VMFramework.Properties
         #endregion
 
         public static implicit operator float(BaseBoostFloatProperty<TOwner> property) => property.value;
+
+        public static implicit operator BaseBoostFloat(BaseBoostFloatProperty<TOwner> property) =>
+            new(property.baseValue, property.boostValue, property.value);
     }
-    
+
     /// <summary>
     /// 用来表示小数类型带增益的属性，其值 = 基值 * 增益
     /// </summary>
@@ -159,7 +183,7 @@ namespace VMFramework.Properties
                     new(baseValue, boostValue, this.value));
             }
         }
-        
+
         /// <summary>
         /// Parameters : Previous Value, New Value
         /// </summary>
@@ -172,6 +196,26 @@ namespace VMFramework.Properties
             value = _baseValue * _boostValue;
             value = value.ClampMin(0);
             OnValueChanged = null;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void SetBaseBoost(float newBaseValue, float newBoostValue)
+        {
+            var oldBaseValue = _baseValue;
+            var oldBoostValue = _boostValue;
+            var oldValue = value;
+            _baseValue = newBaseValue;
+            _boostValue = newBoostValue;
+            value = _baseValue * _boostValue;
+            value = value.ClampMin(0);
+            OnValueChanged?.Invoke(new(oldBaseValue, oldBoostValue, oldValue),
+                new(baseValue, boostValue, value));
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void SetBaseBoost(BaseBoostFloat baseBoostFloat)
+        {
+            SetBaseBoost(baseBoostFloat.baseValue, baseBoostFloat.boostValue);
         }
 
         #region To String
@@ -189,5 +233,8 @@ namespace VMFramework.Properties
         #endregion
 
         public static implicit operator float(BaseBoostFloatProperty property) => property.value;
+
+        public static implicit operator BaseBoostFloat(BaseBoostFloatProperty property) =>
+            new(property.baseValue, property.boostValue, property.value);
     }
 }

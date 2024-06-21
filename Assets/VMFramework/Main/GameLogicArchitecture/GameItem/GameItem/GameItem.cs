@@ -34,6 +34,7 @@ namespace VMFramework.GameLogicArchitecture
         [ShowInInspector]
         public GameType uniqueGameType => gamePrefab.uniqueGameType;
 
+        [ShowInInspector]
         public bool isDestroyed { get; private set; } = false;
 
         #endregion

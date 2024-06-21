@@ -10,8 +10,7 @@ namespace VMFramework.UI
     {
         string INameOwner.name => "UI Procedure";
 
-        string IGameEditorMenuTreeNode.folderPath =>
-            (GameCoreSetting.uiPanelGeneralSetting as IGameEditorMenuTreeNode)?.nodePath;
+        string IGameEditorMenuTreeNode.folderPath => GameCoreSetting.uiPanelGeneralSetting.GetNodePath();
     }
 }
 #endif

@@ -1,4 +1,5 @@
 ﻿using FishNet.Object;
+using UnityEngine;
 
 namespace PVZRTS.Damage
 {
@@ -30,6 +31,12 @@ namespace PVZRTS.Damage
         /// <param name="target"></param>
         public static void RequestTakeDamage(this IDamageSource source, IDamageable target)
         {
+            if (source == null)
+            {
+                Debug.LogWarning("Source is null.");
+                return;
+            }
+            
             if (target == null)
             {
                 return;

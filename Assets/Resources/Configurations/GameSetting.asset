@@ -75,3 +75,5 @@ MonoBehaviour:
     type: 2}
   damageGeneralSetting: {fileID: 11400000, guid: cebe6a2bed7d98641b8d917580fb89e9,
     type: 2}
+  spellGeneralSetting: {fileID: 11400000, guid: 2b2f69dcf44b01444b028cde6e11c2d9,
+    type: 2}

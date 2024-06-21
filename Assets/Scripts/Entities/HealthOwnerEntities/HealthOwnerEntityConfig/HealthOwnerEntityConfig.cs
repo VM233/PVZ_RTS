@@ -8,6 +8,8 @@ namespace PVZRTS.Entities
     {
         public override Type gameItemType => typeof(HealthOwnerEntity);
 
+        protected override Type controllerType => typeof(HealthOwnerEntityController);
+
         [TabGroup(TAB_GROUP_NAME, BASIC_CATEGORY)]
         [MinValue(0)]
         public int defaultMaxHealth = 20;

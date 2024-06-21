@@ -82,6 +82,26 @@ namespace VMFramework.Properties
             value = value.ClampMin(0);
             OnValueChanged = null;
         }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void SetBaseBoost(int newBaseValue, float newBoostValue)
+        {
+            var oldBaseValue = _baseValue;
+            var oldBoostValue = _boostValue;
+            var oldValue = value;
+            _baseValue = newBaseValue;
+            _boostValue = newBoostValue;
+            value = (_baseValue * _boostValue).Floor();
+            value = value.ClampMin(0);
+            OnValueChanged?.Invoke(owner, new(oldBaseValue, oldBoostValue, oldValue),
+                new(baseValue, boostValue, value));
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void SetBaseBoost(BaseBoostInt newBaseBoost)
+        {
+            SetBaseBoost(newBaseBoost.baseValue, newBaseBoost.boostValue);
+        }
 
         #region To String
 
@@ -98,6 +118,8 @@ namespace VMFramework.Properties
         #endregion
 
         public static implicit operator int(BaseBoostIntProperty<TOwner> property) => property.value;
+        
+        public static implicit operator BaseBoostInt(BaseBoostIntProperty<TOwner> property) => new(property.baseValue, property.boostValue, property.value);
     }
 
     /// <summary>
@@ -173,6 +195,26 @@ namespace VMFramework.Properties
             value = value.ClampMin(0);
             OnValueChanged = null;
         }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void SetBaseBoost(int newBaseValue, float newBoostValue)
+        {
+            var oldBaseValue = _baseValue;
+            var oldBoostValue = _boostValue;
+            var oldValue = value;
+            _baseValue = newBaseValue;
+            _boostValue = newBoostValue;
+            value = (_baseValue * _boostValue).Floor();
+            value = value.ClampMin(0);
+            OnValueChanged?.Invoke(new(oldBaseValue, oldBoostValue, oldValue),
+                new(baseValue, boostValue, value));
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public void SetBaseBoost(BaseBoostInt newBaseBoost)
+        {
+            SetBaseBoost(newBaseBoost.baseValue, newBaseBoost.boostValue);
+        }
 
         #region To String
 
@@ -189,5 +231,7 @@ namespace VMFramework.Properties
         #endregion
 
         public static implicit operator int(BaseBoostIntProperty property) => property.value;
+        
+        public static implicit operator BaseBoostInt(BaseBoostIntProperty property) => new(property.baseValue, property.boostValue, property.value);
     }
 }

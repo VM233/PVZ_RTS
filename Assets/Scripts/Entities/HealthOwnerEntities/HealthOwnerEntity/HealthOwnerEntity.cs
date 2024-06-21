@@ -1,4 +1,5 @@
 ﻿using System;
+using FishNet.Serializing;
 using PVZRTS.Damage;
 using PVZRTS.Properties;
 using Sirenix.OdinInspector;
@@ -35,6 +36,11 @@ namespace PVZRTS.Entities
             physicalDefense = new(this, healthOwnerEntityConfig.defaultPhysicalDefense);
             magicalDefense = new(this, healthOwnerEntityConfig.defaultMagicalDefense);
             defensePercent = new(this, healthOwnerEntityConfig.defaultDefensePercent);
+        }
+
+        protected override void OnInit()
+        {
+            base.OnInit();
             
             health.OnValueChanged += OnHealthChanged;
         }
@@ -79,6 +85,32 @@ namespace PVZRTS.Entities
         public virtual bool CanBeDamaged(IDamageSource source)
         {
             return true;
+        }
+
+        #endregion
+
+        #region Network Serialization
+
+        protected override void OnWrite(Writer writer)
+        {
+            base.OnWrite(writer);
+            
+            writer.WriteBaseBoostInt(maxHealth);
+            writer.WriteInt32(health);
+            writer.WriteBaseBoostInt(physicalDefense);
+            writer.WriteBaseBoostInt(magicalDefense);
+            writer.WriteSingle(defensePercent);
+        }
+
+        protected override void OnRead(Reader reader)
+        {
+            base.OnRead(reader);
+            
+            maxHealth.SetBaseBoost(reader.ReadBaseBoostInt());
+            health.value = reader.ReadInt32();
+            physicalDefense.SetBaseBoost(reader.ReadBaseBoostInt());
+            magicalDefense.SetBaseBoost(reader.ReadBaseBoostInt());
+            defensePercent.value = reader.ReadSingle();
         }
 
         #endregion

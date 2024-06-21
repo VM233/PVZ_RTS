@@ -6,7 +6,7 @@ namespace PVZRTS.Damage
 {
     public partial class DamageGeneralSetting : IGameEditorMenuTreeNode
     {
-        string INameOwner.name => "伤害";
+        string INameOwner.name => "Damage";
     }
 }
 #endif

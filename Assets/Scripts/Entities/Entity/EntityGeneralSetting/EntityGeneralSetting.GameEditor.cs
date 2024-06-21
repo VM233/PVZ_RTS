@@ -6,7 +6,7 @@ namespace PVZRTS.Entities
 {
     public partial class EntityGeneralSetting : IGameEditorMenuTreeNode
     {
-        string INameOwner.name => "实体";
+        string INameOwner.name => "Entity";
     }
 }
 #endif

@@ -45,7 +45,17 @@ namespace PVZRTS.Entities
         [TargetRpc(ExcludeServer = true)]
         private void DestroyOnClient(NetworkConnection connection)
         {
+            OnDestruct();
             IGameItem.Destroy(entity);
+        }
+
+        #endregion
+
+        #region Destruction
+
+        protected virtual void OnDestruct()
+        {
+            
         }
 
         #endregion

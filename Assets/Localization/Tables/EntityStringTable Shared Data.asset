@@ -23,6 +23,14 @@ MonoBehaviour:
     m_Key: TestHealthOwnerEntityName
     m_Metadata:
       m_Items: []
+  - m_Id: 2638700033978368
+    m_Key: TestCreatureEntityName
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3023767600214016
+    m_Key: TestLinearProjectileEntityName
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

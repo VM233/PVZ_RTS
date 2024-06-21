@@ -7,7 +7,9 @@ namespace PVZRTS.Entities
     public class CreatureConfig : HealthOwnerEntityConfig, ICreatureConfig
     {
         public override Type gameItemType => typeof(Creature);
-        
+
+        protected override Type controllerType => typeof(CreatureController);
+
         protected const string CREATURE_CATEGORY = "Creature";
 
         [TabGroup(TAB_GROUP_NAME, CREATURE_CATEGORY)]

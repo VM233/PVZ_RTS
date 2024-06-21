@@ -10,8 +10,7 @@ namespace VMFramework.Properties
     {
         string INameOwner.name => "Property Tooltip";
 
-        string IGameEditorMenuTreeNode.folderPath =>
-            (GameCoreSetting.propertyGeneralSetting as IGameEditorMenuTreeNode)?.nodePath;
+        string IGameEditorMenuTreeNode.folderPath => GameCoreSetting.propertyGeneralSetting.GetNodePath();
     }
 }
 #endif

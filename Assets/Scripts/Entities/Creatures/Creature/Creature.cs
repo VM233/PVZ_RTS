@@ -1,4 +1,5 @@
 ﻿using System;
+using FishNet.Serializing;
 using PVZRTS.Damage;
 using PVZRTS.Properties;
 using VMFramework.Properties;
@@ -37,6 +38,30 @@ namespace PVZRTS.Entities
         void IDamageSource.ProduceDamagePacket(IDamageable target, out DamagePacket packet)
         {
             ProduceDamagePacket(target, out packet);
+        }
+
+        #endregion
+
+        #region Network Serialization
+
+        protected override void OnWrite(Writer writer)
+        {
+            base.OnWrite(writer);
+            
+            writer.WriteBaseBoostInt(physicalAttack);
+            writer.WriteBaseBoostInt(magicalAttack);
+            writer.WriteSingle(criticalRate);
+            writer.WriteSingle(criticalDamageMultiplier);
+        }
+
+        protected override void OnRead(Reader reader)
+        {
+            base.OnRead(reader);
+            
+            physicalAttack.SetBaseBoost(reader.ReadBaseBoostInt());
+            magicalAttack.SetBaseBoost(reader.ReadBaseBoostInt());
+            criticalRate.value = reader.ReadSingle();
+            criticalDamageMultiplier.value = reader.ReadSingle();
         }
 
         #endregion
