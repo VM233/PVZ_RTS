@@ -50,12 +50,12 @@ namespace VMFramework.Containers
                 container.isDirty = false;
             }
 
-            Observe(container);
+            UUIDCoreManager.Observe(container);
         }
 
         private static void OnContainerClose(IContainer container)
         {
-            Unobserve(container);
+            UUIDCoreManager.Unobserve(container);
         }
     }
 }

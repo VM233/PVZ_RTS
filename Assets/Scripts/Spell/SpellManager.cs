@@ -1,4 +1,5 @@
-﻿using FishNet.Connection;
+﻿using System.Runtime.CompilerServices;
+using FishNet.Connection;
 using FishNet.Object;
 using PVZRTS.GameCore;
 using VMFramework.Network;
@@ -9,16 +10,36 @@ namespace TH.Spells
     [ManagerCreationProvider(nameof(GameManagerType.Spell))]
     public sealed class SpellManager : UUIDManager<SpellManager, ISpell>
     {
-        #region Observe & Unobserve
-
-        protected override void OnObserved(ISpell spell, bool isDirty, NetworkConnection connection)
+        public override void OnStartServer()
         {
-            base.OnObserved(spell, isDirty, connection);
-
-            ReconcileCooldown(connection, spell.uuid, spell.cooldown);
+            base.OnStartServer();
+            
+            OnRegisterEvent += OnRegisterSpell;
+            OnUnregisterEvent += OnUnregisterSpell;
         }
 
-        #endregion
+        public override void OnStopServer()
+        {
+            base.OnStopServer();
+            
+            OnRegisterEvent -= OnRegisterSpell;
+            OnUnregisterEvent -= OnUnregisterSpell;
+        }
+
+        private void OnRegisterSpell(ISpell spell)
+        {
+            spell.OnObservedEvent += OnObserved;
+        }
+
+        private void OnUnregisterSpell(ISpell spell)
+        {
+            spell.OnObservedEvent -= OnObserved;
+        }
+        
+        private void OnObserved(IUUIDOwner owner, bool isDirty, NetworkConnection connection)
+        {
+            ReconcileCooldown(connection, owner.uuid, ((ISpell)owner).cooldown);
+        }
 
         #region Update
 
@@ -77,6 +98,7 @@ namespace TH.Spells
             CastInstantaneously(uuid, spellCastInfo);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Cast(ISpell spell, SpellCastInfo spellCastInfo)
         {
             if (_instance.IsServerStarted)

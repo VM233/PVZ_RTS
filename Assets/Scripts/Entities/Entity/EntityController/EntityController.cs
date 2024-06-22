@@ -29,12 +29,12 @@ namespace PVZRTS.Entities
             InitOnClient(connection, entity);
         }
 
-        public override void OnDespawnServer(NetworkConnection connection)
-        {
-            base.OnDespawnServer(connection);
-            
-            DestroyOnClient(connection);
-        }
+        // public override void OnDespawnServer(NetworkConnection connection)
+        // {
+        //     base.OnDespawnServer(connection);
+        //     
+        //     DestroyOnClient(connection);
+        // }
         
         [TargetRpc(ExcludeServer = true)]
         private void InitOnClient(NetworkConnection connection, IEntity entity)
@@ -42,16 +42,29 @@ namespace PVZRTS.Entities
             Init(entity);
         }
         
-        [TargetRpc(ExcludeServer = true)]
-        private void DestroyOnClient(NetworkConnection connection)
-        {
-            OnDestruct();
-            IGameItem.Destroy(entity);
-        }
+        // [TargetRpc(ExcludeServer = true)]
+        // private void DestroyOnClient(NetworkConnection connection)
+        // {
+        //     OnDestruct();
+        //     IGameItem.Destroy(entity);
+        // }
 
         #endregion
 
         #region Destruction
+
+        public override void OnStopNetwork()
+        {
+            base.OnStopNetwork();
+
+            if (entity.isDestroyed == false)
+            {
+                IGameItem.Destroy(entity);
+            }
+            
+            OnDestruct();
+            entity = null;
+        }
 
         protected virtual void OnDestruct()
         {

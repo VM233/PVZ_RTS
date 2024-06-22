@@ -174,7 +174,7 @@ MonoBehaviour:
       Data: 1
     - Name: maxLifeTime
       Entry: 4
-      Data: 10
+      Data: 3
     - Name: defaultSpeed
       Entry: 4
       Data: 1

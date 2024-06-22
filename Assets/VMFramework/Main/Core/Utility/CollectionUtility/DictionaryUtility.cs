@@ -8,6 +8,19 @@ namespace VMFramework.Core
 {
     public static class DictionaryUtility
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static TValue GetValueOrAddNew<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key)
+            where TValue : new()
+        {
+            if (dict.TryGetValue(key, out var value) == false)
+            {
+                value = new TValue();
+                dict.Add(key, value);
+            }
+
+            return value;
+        }
+
         public static void FillMissingKeys<TKey, TValue>(this IDictionary<TKey, TValue> dict, 
             IEnumerable<TKey> keys)
         {

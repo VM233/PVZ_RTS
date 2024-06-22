@@ -57,10 +57,9 @@ namespace VMFramework.GameLogicArchitecture
             OnClone(other);
         }
 
-        bool IGameItem.isDestroyed
+        void IDestructible.SetDestructible(bool isDestructible)
         {
-            get => isDestroyed;
-            set => isDestroyed = value;
+            isDestroyed = isDestructible;
         }
 
         #endregion

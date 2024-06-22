@@ -26,6 +26,7 @@ namespace VMFramework.Network
             base.OnStartServer();
             
             IGameItem.OnGameItemCreated += OnGameItemCreated;
+            IGameItem.OnGameItemDestroyed += OnGameItemDestroyed;
         }
 
         public override void OnStopServer()
@@ -33,6 +34,7 @@ namespace VMFramework.Network
             base.OnStopServer();
             
             IGameItem.OnGameItemCreated -= OnGameItemCreated;
+            IGameItem.OnGameItemDestroyed -= OnGameItemDestroyed;
         }
 
         private void OnGameItemCreated(IGameItem gameItem)
@@ -54,12 +56,15 @@ namespace VMFramework.Network
                 return;
             }
 
+            if (Unregister(owner) == false)
+            {
+                return;
+            }
+
             if (owner.SetUUID(null) == false)
             {
                 Debug.LogWarning($"设置{owner.GetType()}的uuid失败，{owner}的uuid已经被清空");
             }
-            
-            Unregister(owner);
         }
 
         #region Register & Unregister
@@ -188,6 +193,12 @@ namespace VMFramework.Network
             }
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Observe(IUUIDOwner owner)
+        {
+            Observe(owner?.uuid);
+        }
+
         #endregion
 
         #region Unobserve
@@ -230,6 +241,12 @@ namespace VMFramework.Network
             {
                 Debug.LogWarning($"不存在此{nameof(uuid)}:{uuid}对应的{typeof(IUUIDOwner)}");
             }
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Unobserve(IUUIDOwner owner)
+        {
+            Unobserve(owner?.uuid);
         }
 
         #endregion
