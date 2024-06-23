@@ -6,7 +6,7 @@ using VMFramework.OdinExtensions;
 
 namespace TH.Spells
 {
-    public sealed partial class GeneralSpellPreset : SpellPreset
+    public sealed partial class GeneralSpellConfig : SpellConfig
     {
         public override Type gameItemType => typeof(GeneralSpell);
 

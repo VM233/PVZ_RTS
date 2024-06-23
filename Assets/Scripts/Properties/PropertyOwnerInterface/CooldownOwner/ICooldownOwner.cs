@@ -1,9 +1,15 @@
 ﻿using System;
+using TH.Spells;
+using VMFramework.Properties;
 
 namespace PVZRTS.Properties
 {
-    public interface ICooldownOwner
+    public interface ICooldownOwner : ICooldownProvider
     {
-        public float cooldown { get; set; }
+        /// <summary>
+        /// The event that is called when the cooldown ends.
+        /// Only listen to this event if it's in server-side!
+        /// </summary>
+        public event Action<ISpell> OnCooldownEnd;
     }
 }

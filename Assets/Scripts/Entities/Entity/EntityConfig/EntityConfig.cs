@@ -12,7 +12,7 @@ namespace PVZRTS.Entities
 
         protected sealed override string idSuffix => "entity";
         
-        protected virtual Type controllerType => typeof(EntityController);
+        protected virtual Type controllerType => typeof(IEntityController);
 
         [TabGroup(TAB_GROUP_NAME, BASIC_CATEGORY)]
         [MinValue(0), MaxValue(100)]

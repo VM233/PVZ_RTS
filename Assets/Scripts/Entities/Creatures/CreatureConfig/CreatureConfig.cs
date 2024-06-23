@@ -8,7 +8,7 @@ namespace PVZRTS.Entities
     {
         public override Type gameItemType => typeof(Creature);
 
-        protected override Type controllerType => typeof(CreatureController);
+        protected override Type controllerType => typeof(ICreatureController);
 
         protected const string CREATURE_CATEGORY = "Creature";
 

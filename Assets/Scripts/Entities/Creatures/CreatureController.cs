@@ -6,7 +6,7 @@ using VMFramework.Properties;
 
 namespace PVZRTS.Entities
 {
-    public class CreatureController : HealthOwnerEntityController
+    public class CreatureController : HealthOwnerEntityController, ICreatureController
     {
         public ICreature creature => (ICreature)entity;
 

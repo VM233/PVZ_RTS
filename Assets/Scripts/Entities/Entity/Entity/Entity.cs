@@ -8,11 +8,11 @@ namespace PVZRTS.Entities
     {
         protected IEntityConfig entityConfig => (IEntityConfig)gamePrefab;
         
-        public EntityController controller { get; private set; }
+        public IEntityController controller { get; private set; }
 
         public GameObject prefab => entityConfig.prefab;
 
-        public void Init(EntityController entityController)
+        public void Init(IEntityController entityController)
         {
             controller = entityController;
             

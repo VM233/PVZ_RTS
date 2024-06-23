@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78139273e9e448e197222669525fbb69, type: 3}
-  m_Name: TestCreatureEntity
+  m_Name: PeaShootingSpell
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 1890629056538547541, guid: 3c4b2b13cf7e2784281ade8f9b5c3b4b, type: 3}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -24,10 +23,10 @@ MonoBehaviour:
     SerializationNodes:
     - Name: gamePrefab
       Entry: 7
-      Data: 0|PVZRTS.Entities.CreatureConfig, Assembly-CSharp
+      Data: 0|TH.Spells.GeneralSpellConfig, Assembly-CSharp
     - Name: _id
       Entry: 1
-      Data: test_creature_entity
+      Data: pea_shooting_spell
     - Name: isActive
       Entry: 5
       Data: true
@@ -39,10 +38,7 @@ MonoBehaviour:
       Data: 1|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
     - Name: 
       Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 1
-      Data: default_entity_type
+      Data: 0
     - Name: 
       Entry: 13
       Data: 
@@ -54,13 +50,13 @@ MonoBehaviour:
       Data: 2|VMFramework.Localization.LocalizedStringReference, Assembly-CSharp
     - Name: _tableName
       Entry: 1
-      Data: EntityStringTable
+      Data: SpellStringTable
     - Name: key
       Entry: 1
-      Data: TestCreatureEntityName
+      Data: PeaShootingSpellName
     - Name: defaultValue
       Entry: 1
-      Data: Test Creature
+      Data: Pea Shooting
     - Name: 
       Entry: 8
       Data: 
@@ -111,10 +107,10 @@ MonoBehaviour:
       Data: 4|VMFramework.Localization.LocalizedStringReference, Assembly-CSharp
     - Name: _tableName
       Entry: 1
-      Data: EntityStringTable
+      Data: SpellStringTable
     - Name: key
       Entry: 1
-      Data: TestCreatureEntityDescription
+      Data: PeaShootingSpellDescription
     - Name: defaultValue
       Entry: 1
       Data: 
@@ -160,36 +156,25 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: prewarmCount
-      Entry: 3
-      Data: 0
-    - Name: prefab
-      Entry: 10
-      Data: 0
-    - Name: defaultMaxHealth
-      Entry: 3
-      Data: 20
-    - Name: defaultPhysicalDefense
-      Entry: 3
-      Data: 0
-    - Name: defaultMagicalDefense
-      Entry: 3
-      Data: 0
-    - Name: defaultDefensePercent
+    - Name: icon
+      Entry: 6
+      Data: 
+    - Name: maxCooldown
       Entry: 4
       Data: 0
-    - Name: defaultPhysicalAttack
-      Entry: 3
+    - Name: spellUnitActions
+      Entry: 7
+      Data: 6|System.Collections.Generic.List`1[[TH.Spells.ISpellUnitAction, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
       Data: 0
-    - Name: defaultMagicalAttack
-      Entry: 3
-      Data: 0
-    - Name: defaultCriticalRate
-      Entry: 4
-      Data: 0
-    - Name: defaultCriticalDamageMultiplier
-      Entry: 4
-      Data: 1
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 

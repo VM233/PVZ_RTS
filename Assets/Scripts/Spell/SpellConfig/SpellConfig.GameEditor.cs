@@ -4,7 +4,7 @@ using VMFramework.Editor.GameEditor;
 
 namespace TH.Spells
 {
-    public partial class SpellPreset : IGameEditorMenuTreeNode
+    public partial class SpellConfig : IGameEditorMenuTreeNode
     {
         Icon IGameEditorMenuTreeNode.icon => icon;
     }

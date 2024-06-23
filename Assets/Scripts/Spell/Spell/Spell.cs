@@ -15,14 +15,21 @@ namespace TH.Spells
 {
     public abstract partial class Spell : VisualGameItem, ISpell, ISlotProvider
     {
-        protected SpellPreset spellPreset => (SpellPreset)gamePrefab;
+        protected ISpellConfig spellConfig => (ISpellConfig)gamePrefab;
 
         [ShowInInspector]
         public string uuid { get; private set; }
 
         [ShowInInspector]
         public ISpellOwner owner { get; private set; }
-        
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            owner = null;
+        }
+
         #region Cooldown
 
         private double expectedTime;
@@ -51,9 +58,16 @@ namespace TH.Spells
             }
         }
 
+        public event Action<ISpell> OnCooldownEnd;
+
         void ITimer.OnStart(double startedTime, double expectedTime)
         {
             this.expectedTime = expectedTime;
+        }
+
+        void ITimer.OnTimed()
+        {
+            OnCooldownEnd?.Invoke(this);
         }
 
         #endregion
@@ -84,7 +98,7 @@ namespace TH.Spells
 
         StyleBackground ISlotProvider.GetIconImage()
         {
-            return new StyleBackground(spellPreset.icon);
+            return new StyleBackground(spellConfig.icon);
         }
 
         string ISlotProvider.GetDescriptionText()
@@ -96,7 +110,7 @@ namespace TH.Spells
         {
             if (isDebugging)
             {
-                Debug.LogWarning($"{this}被鼠标进入");
+                Debug.LogWarning($"Mouse entered {this}");
             }
 
             TooltipManager.Open(this, source);
@@ -106,7 +120,7 @@ namespace TH.Spells
         {
             if (isDebugging)
             {
-                Debug.LogWarning($"{this}被鼠标退出");
+                Debug.LogWarning($"Mouse left {this}");
             }
 
             TooltipManager.Close(this);

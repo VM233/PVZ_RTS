@@ -4,23 +4,16 @@ using VMFramework.Network;
 
 namespace TH.Spells
 {
-    public interface ISpellCaster : IUUIDOwner
+    public interface ISpellCaster : IDamageSource, IUUIDOwner
     {
         /// <summary>
-        /// 施法者的位置
+        /// The position where the spell caster is located.
         /// </summary>
         public Vector3 casterPosition { get; }
 
         /// <summary>
-        /// 施法的位置
+        /// The position where the spell caster is casting the spell from.
         /// </summary>
-        public Vector3 castPosition { get; }
-
-        /// <summary>
-        /// 产生伤害包
-        /// </summary>
-        /// <param name="target"></param>
-        /// <param name="packet"></param>
-        public void ProduceDamagePacket(IDamageable target, out DamagePacket packet);
+        public Vector3 casterCastingPosition { get; }
     }
 }

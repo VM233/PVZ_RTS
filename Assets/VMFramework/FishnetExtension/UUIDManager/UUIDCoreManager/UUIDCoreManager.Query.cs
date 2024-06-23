@@ -25,6 +25,17 @@ namespace VMFramework.Network
             return uuidInfos.TryGetValue(uuid, out info);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetInfoWithWarning(string uuid, out UUIDInfo info)
+        {
+            if (TryGetInfo(uuid, out info) == false)
+            {
+                Debug.LogWarning($"The {nameof(uuid)}:{uuid} does not exist!");
+                return false;
+            }
+            return true;
+        }
+
         #endregion
 
         #region Try Get Owner

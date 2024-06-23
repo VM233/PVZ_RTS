@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace TH.Spells
 {
-    public abstract partial class SpellPreset : DescribedGamePrefab
+    public abstract partial class SpellConfig : DescribedGamePrefab, ISpellConfig
     {
         protected const string SPELL_CATEGORY = "Spell";
 
@@ -15,11 +15,18 @@ namespace TH.Spells
 
         [TabGroup(TAB_GROUP_NAME, SPELL_CATEGORY)]
         [PreviewField(50, ObjectFieldAlignment.Center)]
-        [Required]
         public Sprite icon;
 
         [SuffixLabel("seconds"), TabGroup(TAB_GROUP_NAME, SPELL_CATEGORY)]
         [MinValue(0)]
         public float maxCooldown;
+
+        #region Interface Implementation
+
+        Sprite ISpellConfig.icon => icon;
+
+        float ISpellConfig.maxCooldown => maxCooldown;
+
+        #endregion
     }
 }

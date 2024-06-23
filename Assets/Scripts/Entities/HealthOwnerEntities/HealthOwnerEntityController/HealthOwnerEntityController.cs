@@ -7,7 +7,7 @@ using VMFramework.Properties;
 
 namespace PVZRTS.Entities
 {
-    public partial class HealthOwnerEntityController : EntityController, IDamageableController
+    public partial class HealthOwnerEntityController : EntityController, IHealthOwnerEntityController
     {
         public IHealthOwnerEntity healthOwnerEntity => (IHealthOwnerEntity)entity;
 

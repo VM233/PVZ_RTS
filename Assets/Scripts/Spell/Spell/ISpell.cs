@@ -1,13 +1,16 @@
-﻿using PVZRTS.Properties;
+﻿using System;
+using PVZRTS.Properties;
 using VMFramework.GameLogicArchitecture;
 using VMFramework.Network;
 using VMFramework.Timers;
 
 namespace TH.Spells
 {
-    public interface ISpell : IVisualGameItem, IUUIDOwner, ICooldownOwner, ITimer
+    public interface ISpell : IVisualGameItem, IUUIDCooldownProvider, ICooldownOwner, ITimer
     {
         public ISpellOwner owner { get; }
+
+        public void SetOwner(ISpellOwner owner);
         
         public void Cast(SpellCastInfo spellCastInfo);
 

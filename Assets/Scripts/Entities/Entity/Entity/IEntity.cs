@@ -6,10 +6,10 @@ namespace PVZRTS.Entities
 {
     public interface IEntity : IVisualGameItem, IUUIDOwner
     {
-        public EntityController controller { get; }
+        public IEntityController controller { get; }
         
         public GameObject prefab { get; }
         
-        public void Init(EntityController entityController);
+        public void Init(IEntityController entityController);
     }
 }

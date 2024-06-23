@@ -26,12 +26,12 @@ MonoBehaviour:
     m_Localized: Test Health Owner
     m_Metadata:
       m_Items: []
-  - m_Id: 2638700033978368
-    m_Localized: Test Creature
-    m_Metadata:
-      m_Items: []
   - m_Id: 3023767600214016
     m_Localized: Test Linear Projectile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5045966901194752
+    m_Localized: Test Shooter Plant
     m_Metadata:
       m_Items: []
   references:

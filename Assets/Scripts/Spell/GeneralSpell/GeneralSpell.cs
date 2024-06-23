@@ -6,7 +6,7 @@ namespace TH.Spells
 {
     public sealed class GeneralSpell : Spell
     {
-        private GeneralSpellPreset generalSpellPreset => (GeneralSpellPreset)gamePrefab;
+        private GeneralSpellConfig generalSpellConfig => (GeneralSpellConfig)gamePrefab;
 
         private bool isAborted;
         private SpellAbortInfo spellAbortInfo;
@@ -34,15 +34,15 @@ namespace TH.Spells
                 Complete = () => completedCount++,
             };
 
-            foreach (var spellUnitAction in generalSpellPreset.spellUnitActions)
+            foreach (var spellUnitAction in generalSpellConfig.spellUnitActions)
             {
                 spellUnitAction.Examine(this, spellCastInfo, operationToken);
             }
 
             await UniTask.WaitUntil(() =>
-                isAborted || completedCount >= generalSpellPreset.spellUnitActions.Count);
+                isAborted || completedCount >= generalSpellConfig.spellUnitActions.Count);
 
-            cooldown = generalSpellPreset.maxCooldown;
+            cooldown = generalSpellConfig.maxCooldown;
         }
 
         public override void Abort(SpellAbortInfo spellAbortInfo)

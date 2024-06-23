@@ -1,7 +1,7 @@
 ﻿#if UNITY_EDITOR
 namespace TH.Spells
 {
-    public partial class GeneralSpellPreset
+    public partial class GeneralSpellConfig
     {
         protected override void OnInspectorInit()
         {

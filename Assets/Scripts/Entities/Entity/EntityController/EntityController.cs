@@ -9,7 +9,7 @@ using VMFramework.UI;
 
 namespace PVZRTS.Entities
 {
-    public partial class EntityController : NetworkBehaviour, ITooltipProviderController
+    public partial class EntityController : NetworkBehaviour, IEntityController, ITooltipProviderController
     {
         [ShowInInspector]
         public IEntity entity { get; private set; }

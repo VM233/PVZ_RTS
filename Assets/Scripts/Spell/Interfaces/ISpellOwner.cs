@@ -5,8 +5,8 @@ namespace TH.Spells
     public interface ISpellOwner
     {
         /// <summary>
-        /// 施法的位置
+        /// The position where the spell owner is casting the spell from.
         /// </summary>
-        public Vector2 castPosition { get; }
+        public Vector3 ownerCastingPosition { get; }
     }
 }

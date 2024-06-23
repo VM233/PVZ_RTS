@@ -8,7 +8,7 @@ namespace PVZRTS.Entities
     {
         public override Type gameItemType => typeof(HealthOwnerEntity);
 
-        protected override Type controllerType => typeof(HealthOwnerEntityController);
+        protected override Type controllerType => typeof(IHealthOwnerEntityController);
 
         [TabGroup(TAB_GROUP_NAME, BASIC_CATEGORY)]
         [MinValue(0)]

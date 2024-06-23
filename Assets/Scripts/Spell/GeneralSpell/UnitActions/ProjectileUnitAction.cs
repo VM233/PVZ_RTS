@@ -95,7 +95,7 @@ namespace TH.Spells
             }
             else if (spellCastInfo.targetType.HasFlag(SpellTargetType.Position))
             {
-                mainDirection = spellCastInfo.mainPosition - spellCastInfo.caster.castPosition;
+                mainDirection = spellCastInfo.mainPosition - spellCastInfo.caster.casterPosition;
             }
             else
             {
@@ -143,8 +143,8 @@ namespace TH.Spells
             {
                 Vector3 spawnPosition = projectileSpawnPosition switch
                 {
-                    ProjectileSpawnPosition.Caster => spellCastInfo.caster.castPosition,
-                    ProjectileSpawnPosition.Owner => spell.owner.castPosition,
+                    ProjectileSpawnPosition.Caster => spellCastInfo.caster.casterCastingPosition,
+                    ProjectileSpawnPosition.Owner => spell.owner.ownerCastingPosition,
                     _ => throw new ArgumentOutOfRangeException()
                 };
 

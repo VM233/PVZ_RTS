@@ -7,7 +7,7 @@ namespace TH.Spells
     {
         #region Meta Data
 
-        public override Type baseGamePrefabType => typeof(SpellPreset);
+        public override Type baseGamePrefabType => typeof(SpellConfig);
 
         public override string gameItemName => nameof(Spell);
 
