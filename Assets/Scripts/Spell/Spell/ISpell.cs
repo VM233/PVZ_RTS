@@ -11,6 +11,8 @@ namespace TH.Spells
         public ISpellOwner owner { get; }
 
         public void SetOwner(ISpellOwner owner);
+
+        public void SetToMaxCooldown();
         
         public void Cast(SpellCastInfo spellCastInfo);
 

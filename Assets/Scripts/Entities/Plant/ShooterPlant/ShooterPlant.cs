@@ -1,4 +1,5 @@
 ﻿using FishNet.Serializing;
+using PVZRTS.Properties;
 using TH.Spells;
 using UnityEngine;
 using VMFramework.GameLogicArchitecture;
@@ -22,10 +23,24 @@ namespace PVZRTS.Entities
             shooterSpell.SetOwner(this);
         }
 
+        protected override void OnInit()
+        {
+            base.OnInit();
+            
+            shooterSpell.OnCooldownEnd += ShooterSpellOnOnCooldownEnd;
+            shooterSpell.SetToMaxCooldown();
+        }
+
+        private void ShooterSpellOnOnCooldownEnd(ICooldownOwner cooldownOwner)
+        {
+            shooterSpell.Cast(new SpellCastInfo(this, SpellTargetType.Direction, Vector3.right));
+        }
+
         protected override void OnDestroy()
         {
             base.OnDestroy();
 
+            shooterSpell.OnCooldownEnd -= ShooterSpellOnOnCooldownEnd;
             shooterSpell = null;
         }
 

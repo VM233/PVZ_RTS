@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace PVZRTS.Entities
 {
-    public class LinearBulletController : BulletController
+    public class LinearBulletController : BulletController, ILinearBulletController
     {
         protected ILinearBullet linearBullet => (ILinearBullet)entity;
 

@@ -6,6 +6,6 @@ namespace PVZRTS.Entities
     {
         public override Type gameItemType => typeof(LinearBullet);
 
-        protected override Type controllerType => typeof(LinearBulletController);
+        protected override Type controllerType => typeof(ILinearBulletController);
     }
 }

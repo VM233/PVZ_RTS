@@ -28,12 +28,12 @@ namespace TH.Spells
 
             if (spellCastInfo.targetType.HasFlag(SpellTargetType.Direction))
             {
-                writer.WriteVector2(spellCastInfo.mainDirection);
+                writer.WriteVector3(spellCastInfo.mainDirection);
             }
 
             if (spellCastInfo.targetType.HasFlag(SpellTargetType.Position))
             {
-                writer.WriteVector2(spellCastInfo.mainPosition);
+                writer.WriteVector3(spellCastInfo.mainPosition);
             }
         }
 
@@ -69,28 +69,21 @@ namespace TH.Spells
                 }
             }
 
-            Vector2 mainDirection = default;
+            Vector3 mainDirection = default;
 
             if (spellTargetType.HasFlag(SpellTargetType.Direction))
             {
-                mainDirection = reader.ReadVector2();
+                mainDirection = reader.ReadVector3();
             }
 
-            Vector2 mainPosition = default;
+            Vector3 mainPosition = default;
 
             if (spellTargetType.HasFlag(SpellTargetType.Position))
             {
-                mainPosition = reader.ReadVector2();
+                mainPosition = reader.ReadVector3();
             }
 
-            return new SpellCastInfo()
-            {
-                caster = caster,
-                targetType = spellTargetType,
-                entities = entities,
-                mainDirection = mainDirection,
-                mainPosition = mainPosition,
-            };
+            return new SpellCastInfo(caster, spellTargetType, entities, mainDirection, mainPosition);
         }
     }
 }

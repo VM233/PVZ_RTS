@@ -1,11 +1,12 @@
-﻿using Sirenix.OdinInspector;
+﻿using System;
+using Sirenix.OdinInspector;
 
 namespace PVZRTS.Entities
 {
     public abstract class ProjectileConfig : EntityConfig, IProjectileConfig
     {
         protected const string PROJECTILE_CATEGORY = "Projectile";
-        
+
         [TabGroup(TAB_GROUP_NAME, PROJECTILE_CATEGORY)]
         public bool hasMaxDamageCount = true;
 

@@ -51,6 +51,30 @@ namespace TH.Spells
         [SerializeField]
         private IVectorChooserConfig<int> magicalAttack = new SingleVectorChooserConfig<int>(1);
 
+        public override void CheckSettings()
+        {
+            base.CheckSettings();
+            
+            scatterAngle.CheckSettings();
+            numbers.CheckSettings();
+            shootingInterval.CheckSettings();
+            delay.CheckSettings();
+            physicalAttack.CheckSettings();
+            magicalAttack.CheckSettings();
+        }
+
+        protected override void OnInit()
+        {
+            base.OnInit();
+            
+            scatterAngle.Init();
+            numbers.Init();
+            shootingInterval.Init();
+            delay.Init();
+            physicalAttack.Init();
+            magicalAttack.Init();
+        }
+
         public override async void Examine(ISpell spell, SpellCastInfo spellCastInfo,
             SpellOperationToken operationToken)
         {

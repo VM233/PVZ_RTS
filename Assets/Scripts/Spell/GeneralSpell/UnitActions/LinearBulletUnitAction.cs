@@ -8,13 +8,27 @@ using VMFramework.GameLogicArchitecture;
 namespace TH.Spells
 {
     [TypeInfoBox("Linear Bullet")]
-    public sealed class LinearBulletUnitAction : BulletUnitAction
+    public sealed partial class LinearBulletUnitAction : BulletUnitAction
     {
         public override SpellTargetType supportedTargetType =>
             SpellTargetType.Entities | SpellTargetType.Direction;
         
         [SerializeField]
         private IGamePrefabIDChooserConfig<ILinearBulletConfig> linearProjectileID;
+
+        public override void CheckSettings()
+        {
+            base.CheckSettings();
+            
+            linearProjectileID.CheckSettings();
+        }
+
+        protected override void OnInit()
+        {
+            base.OnInit();
+            
+            linearProjectileID.Init();
+        }
 
         protected override void CreateProjectile(ISpell spell, SpellCastInfo spellCastInfo,
             Vector3 spawnPosition, Vector3 direction)

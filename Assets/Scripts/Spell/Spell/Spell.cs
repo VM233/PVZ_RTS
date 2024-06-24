@@ -58,7 +58,7 @@ namespace TH.Spells
             }
         }
 
-        public event Action<ISpell> OnCooldownEnd;
+        public event Action<ICooldownOwner> OnCooldownEnd;
 
         void ITimer.OnStart(double startedTime, double expectedTime)
         {
@@ -68,6 +68,11 @@ namespace TH.Spells
         void ITimer.OnTimed()
         {
             OnCooldownEnd?.Invoke(this);
+        }
+
+        public void SetToMaxCooldown()
+        {
+            cooldown = spellConfig.maxCooldown;
         }
 
         #endregion

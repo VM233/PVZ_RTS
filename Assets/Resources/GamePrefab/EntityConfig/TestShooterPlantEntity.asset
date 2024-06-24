@@ -188,8 +188,8 @@ MonoBehaviour:
       Entry: 4
       Data: 1
     - Name: shootingSpellID
-      Entry: 6
-      Data: 
+      Entry: 1
+      Data: pea_shooting_spell
     - Name: 
       Entry: 8
       Data: 

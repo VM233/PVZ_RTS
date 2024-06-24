@@ -11,6 +11,7 @@ namespace PVZRTS.Entities
 
         protected override Type controllerType => typeof(IShooterPlantController);
 
+        [TabGroup(TAB_GROUP_NAME, CREATURE_CATEGORY)]
         [GamePrefabID(typeof(ISpellConfig))]
         public string shootingSpellID;
 

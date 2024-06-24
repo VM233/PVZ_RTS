@@ -57,13 +57,12 @@ namespace PVZRTS.Entities
         {
             base.OnStopNetwork();
 
-            if (entity.isDestroyed == false)
+            if (entity is { isDestroyed: false })
             {
                 IGameItem.Destroy(entity);
+                OnDestruct();
+                entity = null;
             }
-            
-            OnDestruct();
-            entity = null;
         }
 
         protected virtual void OnDestruct()
