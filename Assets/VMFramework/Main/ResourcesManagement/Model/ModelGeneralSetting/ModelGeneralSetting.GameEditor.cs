@@ -12,8 +12,6 @@ namespace VMFramework.ResourcesManagement
         string INameOwner.name => "Model Prefab";
 
         Icon IGameEditorMenuTreeNode.icon => SdfIconType.BoxSeam;
-
-        string IGameEditorMenuTreeNode.folderPath => GameEditorNames.RESOURCES_MANAGEMENT_CATEGORY;
     }
 }
 #endif

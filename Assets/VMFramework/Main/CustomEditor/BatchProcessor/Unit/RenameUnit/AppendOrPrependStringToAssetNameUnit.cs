@@ -1,7 +1,7 @@
 ﻿#if UNITY_EDITOR
 using Sirenix.OdinInspector;
 
-namespace VMFramework.Editor
+namespace VMFramework.Editor.BatchProcessor
 {
     public sealed class AppendOrPrependStringToAssetNameUnit : DoubleButtonRenameAssetUnit
     {

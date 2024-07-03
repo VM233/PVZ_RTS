@@ -1,6 +1,7 @@
 ﻿#if UNITY_EDITOR
+using System.Collections.Generic;
+using VMFramework.Core.Editor;
 using VMFramework.GameLogicArchitecture;
-using VMFramework.Localization;
 
 namespace VMFramework.Editor.GameEditor
 {
@@ -8,7 +9,18 @@ namespace VMFramework.Editor.GameEditor
     {
         string INameOwner.name => "Game Editor";
 
-        string IGameEditorMenuTreeNode.folderPath => GameEditorNames.EDITOR_CATEGORY;
+        protected override IEnumerable<ToolbarButtonConfig> GetToolbarButtons()
+        {
+            yield return new(GameEditorNames.OPEN_GAME_EDITOR_SCRIPT_BUTTON_PATH, () =>
+            {
+                typeof(GameEditor).OpenScriptOfType();
+            });
+            
+            foreach (var config in base.GetToolbarButtons())
+            {
+                yield return config;
+            }
+        }
     }
 }
 #endif

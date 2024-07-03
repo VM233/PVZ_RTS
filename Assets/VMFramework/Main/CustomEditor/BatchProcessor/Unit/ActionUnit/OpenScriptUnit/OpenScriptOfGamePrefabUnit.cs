@@ -4,7 +4,7 @@ using System.Linq;
 using VMFramework.Core.Editor;
 using VMFramework.GameLogicArchitecture;
 
-namespace VMFramework.Editor
+namespace VMFramework.Editor.BatchProcessor
 {
     public sealed class OpenScriptOfGamePrefabUnit : SingleButtonBatchProcessorUnit
     {

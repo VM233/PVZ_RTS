@@ -38,10 +38,8 @@ namespace VMFramework.GameLogicArchitecture
         [Button, PropertyOrder(-100)]
         private void ChangeType()
         {
-            if (GamePrefabGeneralSettingUtility.TryGetGamePrefabGeneralSetting(gamePrefab,
-                    out var generalSetting) == false)
+            if (gamePrefab.TryGetGamePrefabGeneralSettingWithWarning(out var generalSetting) == false)
             {
-                Debug.LogError("Could not find a GamePrefabGeneralSetting for the selected GamePrefab.");
                 return;
             }
 

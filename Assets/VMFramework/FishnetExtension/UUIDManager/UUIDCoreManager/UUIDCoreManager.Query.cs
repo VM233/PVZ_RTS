@@ -150,7 +150,7 @@ namespace VMFramework.Network
         {
             if (TryGetInfo(uuid, out var info))
             {
-                return info.observers.Select(id => _instance.ServerManager.Clients[id]);
+                return info.observers.Select(id => instance.ServerManager.Clients[id]);
             }
 
             return null;

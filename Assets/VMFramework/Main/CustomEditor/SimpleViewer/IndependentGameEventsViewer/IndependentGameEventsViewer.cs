@@ -9,7 +9,7 @@ namespace VMFramework.Editor.IndependentGameEventsViewer
     {
         public const string EDITOR_NAME = "Independent Game Events Viewer";
 
-        [MenuItem("Tools/" + EDITOR_NAME)]
+        [MenuItem(UnityMenuItemNames.VMFRAMEWORK + EDITOR_NAME)]
         public static void OpenWindow()
         {
             GetSimpleWindow<IndependentGameEventsViewer>(EDITOR_NAME);

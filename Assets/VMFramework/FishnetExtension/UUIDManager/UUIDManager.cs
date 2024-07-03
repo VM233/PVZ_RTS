@@ -18,10 +18,10 @@ namespace VMFramework.Network
         public static Action<TUUIDOwner> OnRegisterEvent;
         public static Action<TUUIDOwner> OnUnregisterEvent;
 
-        protected override void OnBeforeInit()
+        protected override void OnBeforeInitStart()
         {
-            base.OnBeforeInit();
-
+            base.OnBeforeInitStart();
+            
             allInfos.Clear();
             
             UUIDCoreManager.OnUUIDOwnerRegistered += OnRegister;

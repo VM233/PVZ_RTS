@@ -7,7 +7,7 @@ using UnityEngine;
 using VMFramework.Core;
 using VMFramework.Core.Linq;
 
-namespace VMFramework.Editor
+namespace VMFramework.Editor.BatchProcessor
 {
     public sealed class QueryDerivedTypesUnit : SingleButtonBatchProcessorUnit
     {

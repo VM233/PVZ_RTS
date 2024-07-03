@@ -18,7 +18,7 @@ namespace VMFramework.GameLogicArchitecture
 
         #region Toolbar
 
-        protected override IEnumerable<IGameEditorToolBarProvider.ToolbarButtonConfig> GetToolbarButtons()
+        protected override IEnumerable<ToolbarButtonConfig> GetToolbarButtons()
         {
             yield return new(EditorNames.OPEN_GAME_PREFAB_SCRIPT_BUTTON_PATH, OpenGamePrefabScript);
             

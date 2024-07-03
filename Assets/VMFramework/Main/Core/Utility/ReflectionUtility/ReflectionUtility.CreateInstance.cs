@@ -68,5 +68,11 @@ namespace VMFramework.Core
         {
             return Activator.CreateInstance(type);
         }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static T CreateInstance<T>()
+        {
+            return (T)Activator.CreateInstance(typeof(T));
+        }
     }
 }

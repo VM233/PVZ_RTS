@@ -12,8 +12,6 @@ namespace VMFramework.Containers
         string INameOwner.name => "Container";
 
         Icon IGameEditorMenuTreeNode.icon => SdfIconType.Archive;
-
-        string IGameEditorMenuTreeNode.folderPath => GameEditorNames.BUILT_IN_CATEGORY;
     }
 }
 #endif

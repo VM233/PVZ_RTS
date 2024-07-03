@@ -5,23 +5,17 @@ using VMFramework.GameLogicArchitecture;
 
 namespace VMFramework.Editor.GameEditor
 {
-    public interface IGameEditorMenuTreeNode : INameOwner
+    public interface IGameEditorMenuTreeNode : INameOwner, IParentProvider<IGameEditorMenuTreeNode>
     {
-        public string folderPath => "";
-
         public Icon icon => Icon.None;
 
-        public string nodePath
-        {
-            get
-            {
-                if (folderPath.IsNullOrEmpty())
-                {
-                    return name;
-                }
+        public IGameEditorMenuTreeNode parentNode => null;
+        
+        public bool isVisible => true;
 
-                return folderPath + "/" + name;
-            }
+        IGameEditorMenuTreeNode IParentProvider<IGameEditorMenuTreeNode>.GetParent()
+        {
+            return parentNode;
         }
     }
 }

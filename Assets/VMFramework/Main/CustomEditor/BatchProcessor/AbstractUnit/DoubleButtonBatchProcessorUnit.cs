@@ -4,7 +4,7 @@ using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace VMFramework.Editor
+namespace VMFramework.Editor.BatchProcessor
 {
     public abstract class DoubleButtonBatchProcessorUnit : BatchProcessorUnit
     {

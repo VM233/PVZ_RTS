@@ -1,4 +1,6 @@
 ﻿#if UNITY_EDITOR
+using System;
+using System.Runtime.CompilerServices;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -38,6 +40,18 @@ namespace VMFramework.Editor
             sdfIconType = SdfIconType.None;
             spriteIcon = null;
             this.textureIcon = textureIcon;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public bool IsNone()
+        {
+            return iconType switch
+            {
+                EditorIconType.Sprite => spriteIcon == null,
+                EditorIconType.SdfIcon => sdfIconType == SdfIconType.None,
+                EditorIconType.Texture => textureIcon == null,
+                _ => throw new ArgumentOutOfRangeException()
+            };
         }
         
         public static implicit operator Icon(SdfIconType sdfIconType) => new(sdfIconType);

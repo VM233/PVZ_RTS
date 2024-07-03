@@ -15,29 +15,27 @@ namespace VMFramework.UI
 
         protected virtual void OnCurrentLanguageChanged(Locale currentLocale)
         {
-            if (GameCoreSetting.uiPanelGeneralSetting.enableLanguageConfigs == false)
+            if (UISetting.uiPanelGeneralSetting.enableLanguageConfigs == false)
             {
                 return;
             }
-            
+
             if (lastLocale != null)
             {
                 var previousLanguageConfig =
-                    GameCoreSetting.uiPanelGeneralSetting.languageConfigs.GetConfig(currentLocale
-                        .Identifier.Code);
-        
+                    UISetting.uiPanelGeneralSetting.languageConfigs.GetConfig(currentLocale.Identifier.Code);
+
                 if (previousLanguageConfig != null)
                 {
                     rootVisualElement.styleSheets.Remove(previousLanguageConfig.styleSheet);
                 }
             }
-                
+
             lastLocale = currentLocale;
-        
+
             var currentLanguageConfig =
-                GameCoreSetting.uiPanelGeneralSetting.languageConfigs.GetConfig(currentLocale
-                    .Identifier.Code);
-        
+                UISetting.uiPanelGeneralSetting.languageConfigs.GetConfig(currentLocale.Identifier.Code);
+
             if (currentLanguageConfig != null)
             {
                 rootVisualElement.styleSheets.Add(currentLanguageConfig.styleSheet);

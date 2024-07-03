@@ -5,8 +5,9 @@ using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 
-namespace VMFramework.Editor
+namespace VMFramework.Editor.BatchProcessor
 {
+    [UnitSettings(UnitPriority.High)]
     public sealed class AddOrReplaceFromSelectionUnit : BatchProcessorUnit
     {
         public override bool IsValid(IList<object> selectedObjects)

@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using VMFramework.Core;
 using VMFramework.GameLogicArchitecture;
+using VMFramework.GameLogicArchitecture.Editor;
 
-namespace VMFramework.Editor
+namespace VMFramework.Editor.BatchProcessor
 {
     public sealed class FindGamePrefabWrapperUnit : SingleButtonBatchProcessorUnit
     {
@@ -37,7 +38,7 @@ namespace VMFramework.Editor
             {
                 if (obj is IGamePrefab gamePrefab)
                 {
-                    foreach (var wrapper in GamePrefabWrapperQuery.GetGamePrefabWrappers(gamePrefab))
+                    foreach (var wrapper in GamePrefabWrapperQueryTools.GetGamePrefabWrappers(gamePrefab))
                     {
                         yield return wrapper;
                     }
@@ -49,7 +50,7 @@ namespace VMFramework.Editor
                 {
                     if (type.IsDerivedFrom<IGamePrefab>(true))
                     {
-                        foreach (var wrapper in GamePrefabWrapperQuery.GetGamePrefabWrappers(type))
+                        foreach (var wrapper in GamePrefabWrapperQueryTools.GetGamePrefabWrappers(type))
                         {
                             yield return wrapper;
                         }

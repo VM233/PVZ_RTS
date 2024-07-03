@@ -12,8 +12,6 @@ namespace VMFramework.UI
         string INameOwner.name => "Debug Entry";
 
         Icon IGameEditorMenuTreeNode.icon => SdfIconType.Bug;
-
-        string IGameEditorMenuTreeNode.folderPath => GameCoreSetting.uiPanelGeneralSetting.GetNodePath();
     }
 }
 #endif

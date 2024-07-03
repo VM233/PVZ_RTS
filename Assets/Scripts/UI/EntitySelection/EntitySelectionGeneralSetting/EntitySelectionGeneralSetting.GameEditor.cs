@@ -8,8 +8,6 @@ namespace PVZRTS.UI
     public partial class EntitySelectionGeneralSetting : IGameEditorMenuTreeNode
     {
         string INameOwner.name => "Entity Selection";
-
-        public string folderPath => GameSetting.entityGeneralSetting.GetNodePath();
     }
 }
 #endif

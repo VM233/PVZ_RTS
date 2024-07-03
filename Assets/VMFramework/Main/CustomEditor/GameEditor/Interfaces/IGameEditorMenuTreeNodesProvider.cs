@@ -1,9 +1,10 @@
 ﻿#if UNITY_EDITOR
 using System.Collections.Generic;
+using VMFramework.GameLogicArchitecture;
 
 namespace VMFramework.Editor.GameEditor
 {
-    public interface IGameEditorMenuTreeNodesProvider
+    public interface IGameEditorMenuTreeNodesProvider : INameOwner
     {
         public bool autoStackMenuTreeNodes => false;
 

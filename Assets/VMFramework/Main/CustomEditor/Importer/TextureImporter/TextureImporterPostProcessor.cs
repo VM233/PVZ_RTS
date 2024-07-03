@@ -1,7 +1,7 @@
 ﻿#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
-using VMFramework.GameLogicArchitecture;
+using VMFramework.GameLogicArchitecture.Editor;
 
 namespace VMFramework.Editor
 {
@@ -16,12 +16,12 @@ namespace VMFramework.Editor
                 return;
             }
 
-            if (GameCoreSetting.textureImporterGeneralSetting == null)
+            if (EditorSetting.textureImporterGeneralSetting == null)
             {
                 return;
             }
 
-            foreach (var configuration in GameCoreSetting.textureImporterGeneralSetting.configurations)
+            foreach (var configuration in EditorSetting.textureImporterGeneralSetting.configurations)
             {
                 if (configuration.isOn == false)
                 {

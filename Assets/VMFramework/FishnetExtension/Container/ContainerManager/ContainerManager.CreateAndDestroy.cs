@@ -1,15 +1,23 @@
 ﻿#if FISHNET
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using VMFramework.Core.Linq;
 using VMFramework.GameEvents;
 using VMFramework.Network;
 using VMFramework.Procedure;
 
 namespace VMFramework.Containers
 {
-    public partial class ContainerManager : IManagerBehaviour
+    public partial class ContainerManager
     {
-        void IInitializer.OnInitComplete(Action onDone)
+        protected override IEnumerable<InitializationAction> GetInitializationActions()
+        {
+            return base.GetInitializationActions()
+                .Concat(new(InitializationOrder.InitComplete, OnInitComplete, this));
+        }
+
+        private static void OnInitComplete(Action onDone)
         {
             ContainerCreateEvent.AddCallback(OnContainerCreate, GameEventPriority.SUPER);
             ContainerDestroyEvent.AddCallback(OnContainerDestroy, GameEventPriority.SUPER);

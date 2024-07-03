@@ -1,6 +1,7 @@
 ﻿#if UNITY_EDITOR
 using System;
 using VMFramework.GameLogicArchitecture;
+using VMFramework.GameLogicArchitecture.Editor;
 
 namespace VMFramework.Editor
 {
@@ -10,7 +11,7 @@ namespace VMFramework.Editor
 
     public class HierarchyComponentIcon
     {
-        #region --- VAR ---
+        #region Fields and Properties
 
         private const int DEFAULT_MAX_ICON_NUM = 5;
 
@@ -20,7 +21,7 @@ namespace VMFramework.Editor
         {
             get
             {
-                var setting = GameCoreSetting.hierarchyGeneralSetting;
+                var setting = EditorSetting.hierarchyGeneralSetting;
 
                 if (setting != null)
                 {
@@ -35,7 +36,7 @@ namespace VMFramework.Editor
         {
             get
             {
-                var setting = GameCoreSetting.hierarchyGeneralSetting;
+                var setting = EditorSetting.hierarchyGeneralSetting;
 
                 if (setting != null)
                 {
@@ -56,7 +57,7 @@ namespace VMFramework.Editor
 
         #endregion
 
-        #region --- MSG ---
+        #region Main Methods
 
         [InitializeOnLoadMethod]
         public static void Init()
@@ -153,7 +154,7 @@ namespace VMFramework.Editor
 
         #endregion
 
-        #region --- LGC ---
+        #region Utility
 
         private static bool IsTypeIconRequiredToHide(Type type)
         {

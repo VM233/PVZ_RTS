@@ -60,7 +60,7 @@ namespace VMFramework.UI
                         return 0;
                     }
                     
-                    if (GameCoreSetting.tooltipGeneralSetting.tooltipPriorityPresets.TryGetConfigRuntime(
+                    if (UISetting.tooltipGeneralSetting.tooltipPriorityPresets.TryGetConfigRuntime(
                             presetID, out var config))
                     {
                         return config.priority;

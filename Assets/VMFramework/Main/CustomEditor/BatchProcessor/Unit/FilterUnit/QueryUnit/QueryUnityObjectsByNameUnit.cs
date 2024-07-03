@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace VMFramework.Editor
+namespace VMFramework.Editor.BatchProcessor
 {
     public sealed class QueryUnityObjectsByNameUnit : SingleButtonBatchProcessorUnit
     {

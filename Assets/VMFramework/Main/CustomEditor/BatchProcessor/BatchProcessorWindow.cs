@@ -1,6 +1,5 @@
 ﻿#if UNITY_EDITOR
 using System.Collections.Generic;
-using VMFramework.Editor;
 using Sirenix.Utilities;
 using UnityEngine;
 using Sirenix.Utilities.Editor;
@@ -8,79 +7,82 @@ using UnityEditor;
 using Sirenix.OdinInspector.Editor;
 using VMFramework.Core.Editor;
 
-public sealed class BatchProcessorWindow : OdinEditorWindow
+namespace VMFramework.Editor.BatchProcessor
 {
-    private BatchProcessorContainer container;
-
-    private static BatchProcessorWindow GetWindow()
+    public sealed class BatchProcessorWindow : OdinEditorWindow
     {
-        bool hasOpenedWindow = HasOpenInstances<BatchProcessorWindow>();
-        var window = GetWindow<BatchProcessorWindow>(BatchProcessorNames.BATCH_PROCESSOR_NAME);
+        private BatchProcessorContainer container;
 
-        if (hasOpenedWindow == false)
+        private static BatchProcessorWindow GetWindow()
         {
-            window.position = GUIHelper.GetEditorWindowRect().AlignCenter(900, 600);
+            bool hasOpenedWindow = HasOpenInstances<BatchProcessorWindow>();
+            var window = GetWindow<BatchProcessorWindow>(BatchProcessorNames.BATCH_PROCESSOR_NAME);
+
+            if (hasOpenedWindow == false)
+            {
+                window.position = GUIHelper.GetEditorWindowRect().AlignCenter(900, 600);
+            }
+
+            return window;
         }
 
-        return window;
-    }
-
-    [MenuItem("Tools/" + BatchProcessorNames.BATCH_PROCESSOR_NAME)]
-    public static void OpenWindow()
-    {
-        GetWindow();
-    }
-
-    public static void OpenWindow(IEnumerable<object> selectedObjects)
-    {
-        GetWindow().container.SetSelectedObjects(selectedObjects);
-    }
-
-    public static void AddToWindow(IEnumerable<object> additionalObjects)
-    {
-        GetWindow().container.AddSelectedObjects(additionalObjects);
-    }
-
-    [MenuItem("Assets/" + BatchProcessorNames.BATCH_PROCESSOR_NAME)]
-    [MenuItem("GameObject/" + BatchProcessorNames.BATCH_PROCESSOR_NAME)]
-    public static void OpenWindowFromContextMenu()
-    {
-        var selectedObjects = Selection.objects;
-
-        if (selectedObjects.Length == 1 && selectedObjects[0].IsFolder())
+        [MenuItem(UnityMenuItemNames.VMFRAMEWORK + BatchProcessorNames.BATCH_PROCESSOR_NAME)]
+        public static void OpenWindow()
         {
-            OpenWindow(selectedObjects[0].GetAllAssetsInFolder());
-            return;
+            GetWindow();
         }
 
-        OpenWindow(Selection.objects);
-    }
-
-    protected override void Initialize()
-    {
-        base.Initialize();
-
-        if (container == null)
+        public static void OpenWindow(IEnumerable<object> selectedObjects)
         {
-            container = CreateInstance<BatchProcessorContainer>();
+            GetWindow().container.SetSelectedObjects(selectedObjects);
         }
 
-        container.Init();
-    }
-
-    protected override object GetTarget()
-    {
-        return container;
-    }
-
-    protected override void OnImGUI()
-    {
-        if (Event.current.type == EventType.MouseDown)
+        public static void AddToWindow(IEnumerable<object> additionalObjects)
         {
-            container.UpdateValidUnits();
+            GetWindow().container.AddSelectedObjects(additionalObjects);
         }
 
-        base.OnImGUI();
+        [MenuItem("Assets/" + BatchProcessorNames.BATCH_PROCESSOR_NAME)]
+        [MenuItem("GameObject/" + BatchProcessorNames.BATCH_PROCESSOR_NAME)]
+        public static void OpenWindowFromContextMenu()
+        {
+            var selectedObjects = Selection.objects;
+
+            if (selectedObjects.Length == 1 && selectedObjects[0].IsFolder())
+            {
+                OpenWindow(selectedObjects[0].GetAllAssetsInFolder());
+                return;
+            }
+
+            OpenWindow(Selection.objects);
+        }
+
+        protected override void Initialize()
+        {
+            base.Initialize();
+
+            if (container == null)
+            {
+                container = CreateInstance<BatchProcessorContainer>();
+            }
+
+            container.Init();
+        }
+
+        protected override object GetTarget()
+        {
+            return container;
+        }
+
+        protected override void OnImGUI()
+        {
+            if (Event.current.type == EventType.MouseDown)
+            {
+                container.UpdateValidUnits();
+            }
+
+            base.OnImGUI();
+        }
     }
 }
 #endif

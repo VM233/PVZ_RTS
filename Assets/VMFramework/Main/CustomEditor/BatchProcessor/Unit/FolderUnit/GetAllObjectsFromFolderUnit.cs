@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using VMFramework.Core.Editor;
 
-namespace VMFramework.Editor
+namespace VMFramework.Editor.BatchProcessor
 {
     public sealed class GetAllObjectsFromFolderUnit : SingleButtonBatchProcessorUnit
     {

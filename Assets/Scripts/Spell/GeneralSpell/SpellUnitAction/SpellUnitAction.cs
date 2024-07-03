@@ -9,7 +9,7 @@ namespace TH.Spells
         [ShowInInspector]
         public abstract SpellTargetType supportedTargetType { get; }
 
-        public abstract void Examine(ISpell spell, SpellCastInfo spellCastInfo, 
+        public abstract void Examine(ISpell spell, SpellCastInfo spellCastInfo,
             SpellOperationToken operationToken);
     }
 }

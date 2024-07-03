@@ -8,7 +8,7 @@ namespace VMFramework.Editor
     {
         public const string EDITOR_NAME = "Game Prefab Viewer";
 
-        [MenuItem("Tools/" + EDITOR_NAME)]
+        [MenuItem(UnityMenuItemNames.VMFRAMEWORK + EDITOR_NAME)]
         public static void OpenWindow() => GetSimpleWindow<GamePrefabViewer>(EDITOR_NAME);
     }
 }

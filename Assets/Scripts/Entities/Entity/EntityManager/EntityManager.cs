@@ -17,10 +17,10 @@ namespace PVZRTS.Entities
     {
         private static readonly List<IEntity> entitiesToDestroy = new();
 
-        protected override void OnBeforeInit()
+        protected override void OnBeforeInitStart()
         {
-            base.OnBeforeInit();
-
+            base.OnBeforeInitStart();
+            
             InstanceFinder.TimeManager.OnTick += OnTick;
         }
 

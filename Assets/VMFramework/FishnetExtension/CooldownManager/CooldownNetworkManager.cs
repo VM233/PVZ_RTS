@@ -9,9 +9,9 @@ namespace VMFramework.Network
     [ManagerCreationProvider(ManagerType.NetworkCore)]
     public sealed class CooldownNetworkManager : NetworkManagerBehaviour<CooldownNetworkManager>
     {
-        protected override void OnBeforeInit()
+        protected override void OnBeforeInitStart()
         {
-            base.OnBeforeInit();
+            base.OnBeforeInitStart();
             
             UUIDCoreManager.OnUUIDOwnerObserved += OnUUIDOwnerObserved;
         }
@@ -48,7 +48,7 @@ namespace VMFramework.Network
                 return;
             }
 
-            _instance.ReconcileCooldown(connection, cooldownProvider.uuid, cooldownProvider.cooldown);
+            instance.ReconcileCooldown(connection, cooldownProvider.uuid, cooldownProvider.cooldown);
         }
 
         [TargetRpc(ExcludeServer = true)]

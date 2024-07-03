@@ -12,8 +12,6 @@ namespace VMFramework.GameEvents
         string INameOwner.name => "Mouse Event";
 
         Icon IGameEditorMenuTreeNode.icon => new(SdfIconType.Mouse2);
-
-        string IGameEditorMenuTreeNode.folderPath => GameCoreSetting.gameEventGeneralSetting.GetNodePath();
     }
 }
 #endif

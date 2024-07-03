@@ -6,7 +6,7 @@ namespace TH.Spells
 {
     public partial class SpellUnitAction
     {
-        [Button("打开技能单元脚本")]
+        [Button]
         private void OpenScript()
         {
             GetType().OpenScriptOfType();

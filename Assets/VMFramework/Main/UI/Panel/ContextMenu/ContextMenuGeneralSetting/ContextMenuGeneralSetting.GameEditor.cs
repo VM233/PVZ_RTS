@@ -12,8 +12,6 @@ namespace VMFramework.UI
         string INameOwner.name => "Context Menu";
 
         Icon IGameEditorMenuTreeNode.icon => SdfIconType.BorderStyle;
-
-        string IGameEditorMenuTreeNode.folderPath => GameCoreSetting.uiPanelGeneralSetting.GetNodePath();
     }
 }
 #endif

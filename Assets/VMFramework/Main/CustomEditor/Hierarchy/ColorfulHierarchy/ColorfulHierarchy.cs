@@ -4,12 +4,15 @@ using UnityEditor;
 using UnityEngine;
 using VMFramework.Core;
 using VMFramework.GameLogicArchitecture;
+using VMFramework.GameLogicArchitecture.Editor;
 
 namespace VMFramework.Editor
 {
     [InitializeOnLoad]
     public class ColorfulHierarchy
     {
+        private static HierarchyGeneralSetting generalSetting => EditorSetting.hierarchyGeneralSetting;
+        
         static ColorfulHierarchy()
         {
             EditorApplication.hierarchyWindowItemOnGUI += OnHierarchyWindow;
@@ -17,8 +20,6 @@ namespace VMFramework.Editor
 
         private static void OnHierarchyWindow(int instanceID, Rect selectionRect)
         {
-            var generalSetting = GameCoreSetting.hierarchyGeneralSetting;
-
             if (generalSetting == null)
             {
                 return;

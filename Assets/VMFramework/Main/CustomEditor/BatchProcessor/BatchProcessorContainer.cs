@@ -1,10 +1,11 @@
 ﻿#if UNITY_EDITOR
 using System.Collections.Generic;
+using System.Linq;
 using VMFramework.Core;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace VMFramework.Editor
+namespace VMFramework.Editor.BatchProcessor
 {
     public sealed class BatchProcessorContainer : SerializedScriptableObject
     {
@@ -26,17 +27,29 @@ namespace VMFramework.Editor
 
         public void Init()
         {
-            foreach (var batchProcessorUnit in typeof(BatchProcessorUnit).GetDerivedClasses(false, false))
+            var allUnitsByPriority = new SortedDictionary<int, List<BatchProcessorUnit>>();
+            
+            foreach (var unitType in typeof(BatchProcessorUnit).GetDerivedClasses(false, false))
             {
-                if (batchProcessorUnit.IsAbstract)
+                if (unitType.IsAbstract)
                 {
                     continue;
                 }
 
-                var unit = batchProcessorUnit.CreateInstance() as BatchProcessorUnit;
+                var unit = (BatchProcessorUnit)unitType.CreateInstance();
 
-                allUnits.Add(unit);
+                int priority = (int)UnitPriority.Medium;
+
+                if (unitType.TryGetAttribute(false, out UnitSettingsAttribute settings))
+                {
+                    priority = settings.Priority;
+                }
+
+                var list = allUnitsByPriority.GetValueOrAddNew(priority);
+                list.Add(unit);
             }
+            
+            allUnits.AddRange(allUnitsByPriority.Values.SelectMany(list => list));
 
             foreach (var unit in allUnits)
             {

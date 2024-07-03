@@ -1,0 +1,69 @@
+﻿#if UNITY_EDITOR
+using System.Collections.Generic;
+using Sirenix.OdinInspector;
+using UnityEngine;
+using VMFramework.Core;
+using VMFramework.Core.Editor;
+using VMFramework.Editor;
+using VMFramework.Editor.GameEditor;
+
+namespace VMFramework.GameLogicArchitecture.Editor
+{
+    [GlobalSettingFileConfig(FileName = nameof(EditorSettingFile))]
+    [GlobalSettingFileEditorConfig(FolderPath = ConfigurationPath.INTERNAL_GLOBAL_SETTINGS_PATH)]
+    public sealed partial class EditorSettingFile : GlobalSettingFile
+    {
+        private const string EDITOR_EXTENSION_CATEGORY = "Editor Extension";
+        
+        private const string RESOURCES_PATH_CATEGORY = "Resources Path";
+        
+        [TabGroup(TAB_GROUP_NAME, EDITOR_EXTENSION_CATEGORY)]
+        [Required]
+        public GameEditorGeneralSetting gameEditorGeneralSetting;
+
+        [TabGroup(TAB_GROUP_NAME, EDITOR_EXTENSION_CATEGORY)]
+        [Required]
+        public HierarchyGeneralSetting hierarchyGeneralSetting;
+        
+        [TabGroup(TAB_GROUP_NAME, EDITOR_EXTENSION_CATEGORY)]
+        [Required]
+        public TextureImporterGeneralSetting textureImporterGeneralSetting;
+        
+        [TabGroup(TAB_GROUP_NAME, EDITOR_EXTENSION_CATEGORY)]
+        [Required]
+        public GamePrefabWrapperEditorGeneralSetting gamePrefabWrapperEditorGeneralSetting;
+
+        [TabGroup(TAB_GROUP_NAME, RESOURCES_PATH_CATEGORY)]
+        [FolderPath]
+        public string generalSettingsAssetFolderPath = ConfigurationPath.DEFAULT_GENERAL_SETTINGS_PATH;
+        
+        [TabGroup(TAB_GROUP_NAME, RESOURCES_PATH_CATEGORY)]
+        [FolderPath]
+        public string gamePrefabsAssetFolderPath = ConfigurationPath.DEFAULT_GAME_PREFABS_PATH;
+
+        protected override void OnInspectorInit()
+        {
+            base.OnInspectorInit();
+
+            if (generalSettingsAssetFolderPath.IsNullOrEmpty())
+            {
+                generalSettingsAssetFolderPath = ConfigurationPath.DEFAULT_GENERAL_SETTINGS_PATH;
+            }
+
+            if (gamePrefabsAssetFolderPath.IsNullOrEmpty())
+            {
+                gamePrefabsAssetFolderPath = ConfigurationPath.DEFAULT_GAME_PREFABS_PATH;
+            }
+        }
+        
+        [Button(ButtonSizes.Medium), TabGroup(TAB_GROUP_NAME, RESOURCES_PATH_CATEGORY)]
+        public void MoveGamePrefabWrappersToNewFolder()
+        {
+            foreach (var wrapper in GamePrefabWrapperQueryTools.GetAllGamePrefabWrappers())
+            {
+                wrapper.MoveToDefaultFolder();
+            }
+        }
+    }
+}
+#endif

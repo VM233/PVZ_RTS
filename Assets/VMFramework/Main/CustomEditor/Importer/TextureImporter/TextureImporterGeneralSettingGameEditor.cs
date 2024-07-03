@@ -8,8 +8,6 @@ namespace VMFramework.Editor
     public partial class TextureImporterGeneralSetting : IGameEditorMenuTreeNode
     {
         string INameOwner.name => "Texture Importer";
-
-        string IGameEditorMenuTreeNode.folderPath => GameEditorNames.EDITOR_CATEGORY;
     }
 }
 #endif

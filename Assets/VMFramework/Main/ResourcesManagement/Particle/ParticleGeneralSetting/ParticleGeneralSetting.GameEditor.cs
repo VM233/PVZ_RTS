@@ -12,8 +12,6 @@ namespace VMFramework.ResourcesManagement
         string INameOwner.name => "Particle Preset";
 
         Icon IGameEditorMenuTreeNode.icon => SdfIconType.Flower1;
-
-        string IGameEditorMenuTreeNode.folderPath => GameEditorNames.RESOURCES_MANAGEMENT_CATEGORY;
     }
 }
 #endif

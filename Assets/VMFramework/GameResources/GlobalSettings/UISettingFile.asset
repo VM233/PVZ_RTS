@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b04ad8428da49eda2cb3b59fd34d193, type: 3}
+  m_Name: UISettingFile
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  uiPanelGeneralSetting: {fileID: 11400000, guid: f742e5f904adf9347a1e5d7be8a3545e,
+    type: 2}
+  uiPanelProcedureGeneralSetting: {fileID: 11400000, guid: 80628a54a407b974884f72f585fad16b,
+    type: 2}
+  debugUIPanelGeneralSetting: {fileID: 11400000, guid: 4de1cd37000339447aac3e15c4c78b9c,
+    type: 2}
+  tooltipGeneralSetting: {fileID: 11400000, guid: 53aef3e09385ec74f8ae7107cdc648ec,
+    type: 2}
+  contextMenuGeneralSetting: {fileID: 11400000, guid: 6f4d3b39426ca124ea23b5a6a33f582f,
+    type: 2}

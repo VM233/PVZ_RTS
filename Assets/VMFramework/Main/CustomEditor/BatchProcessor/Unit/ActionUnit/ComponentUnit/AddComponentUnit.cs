@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using VMFramework.OdinExtensions;
 
-namespace VMFramework.Editor
+namespace VMFramework.Editor.BatchProcessor
 {
     public sealed class AddComponentUnit : SingleButtonBatchProcessorUnit
     {

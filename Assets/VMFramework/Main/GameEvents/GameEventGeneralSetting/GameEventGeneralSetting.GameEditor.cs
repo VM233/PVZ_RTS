@@ -12,8 +12,6 @@ namespace VMFramework.GameEvents
         string INameOwner.name => "Game Event";
 
         Icon IGameEditorMenuTreeNode.icon => new(SdfIconType.Dpad);
-
-        string IGameEditorMenuTreeNode.folderPath => GameEditorNames.CORE_CATEGORY;
     }
 }
 #endif

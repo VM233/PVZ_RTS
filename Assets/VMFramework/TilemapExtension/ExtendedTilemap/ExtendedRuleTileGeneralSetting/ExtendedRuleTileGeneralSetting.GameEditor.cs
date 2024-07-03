@@ -12,8 +12,6 @@ namespace VMFramework.ExtendedTilemap
         string INameOwner.name => "Ext Rule Tile";
 
         public Icon icon => SdfIconType.Grid3x3;
-
-        string IGameEditorMenuTreeNode.folderPath => GameEditorNames.BUILT_IN_CATEGORY;
     }
 }
 #endif

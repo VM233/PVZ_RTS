@@ -1,40 +1,20 @@
-﻿using System;
+﻿#if UNITY_EDITOR
 using System.Collections.Generic;
+using System.Linq;
 
 namespace VMFramework.Editor.GameEditor
 {
     public interface IGameEditorContextMenuProvider
     {
-        public struct MenuItemConfig
-        {
-            public string name;
-            public string tooltip;
-            public Action onClick;
-            
-            public MenuItemConfig(string name, Action onClick)
-            {
-                this.name = name;
-                this.tooltip = name;
-                this.onClick = onClick;
-            }
-            
-            public MenuItemConfig(string name, string tooltip, Action onClick)
-            {
-                this.name = name;
-                this.tooltip = tooltip;
-                this.onClick = onClick;
-            }
-        }
-        
         public IEnumerable<MenuItemConfig> GetMenuItems()
         {
-            if (this is IGameEditorToolBarProvider toolBarProvider)
+            if (this is IGameEditorToolbarProvider toolbarProvider)
             {
-                foreach (var config in toolBarProvider.GetToolbarButtons())
-                {
-                    yield return new(config.path, config.tooltip, config.onClick);
-                }
+                return toolbarProvider.GetMenuItemsFromToolbarProvider();
             }
+            
+            return Enumerable.Empty<MenuItemConfig>();
         }
     }
 }
+#endif

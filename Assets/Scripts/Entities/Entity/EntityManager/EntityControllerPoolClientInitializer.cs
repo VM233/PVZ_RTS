@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FishNet;
 using FishNet.Object;
 using UnityEngine;
@@ -13,8 +14,13 @@ namespace PVZRTS.Entities
     public sealed class EntityControllerPoolClientInitializer : IGameInitializer
     {
         private bool hasCached = false;
-        
-        void IInitializer.OnPostInit(Action onDone)
+
+        IEnumerable<InitializationAction> IInitializer.GetInitializationActions()
+        {
+            yield return new(InitializationOrder.PostInit, OnPostInit, this);
+        }
+
+        private void OnPostInit(Action onDone)
         {
             if (hasCached)
             {

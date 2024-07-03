@@ -1,5 +1,6 @@
 #if UNITY_EDITOR
 using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
@@ -10,7 +11,12 @@ namespace VMFramework.Editor.GameEditor
 {
     internal sealed class GameEditorInitializer : IEditorInitializer
     {
-        async void IInitializer.OnInitComplete(Action onDone)
+        IEnumerable<InitializationAction> IInitializer.GetInitializationActions()
+        {
+            yield return new(InitializationOrder.InitComplete, OnInitComplete, this);
+        }
+
+        private static void OnInitComplete(Action onDone)
         {
             if (Application.isPlaying)
             {
@@ -28,8 +34,15 @@ namespace VMFramework.Editor.GameEditor
             {
                 return;
             }
+            
+            Refresh(gameEditor);
+            
+            onDone();
+        }
 
-            await UniTask.Delay(1000);
+        private static async void Refresh(GameEditor gameEditor)
+        {
+            await UniTask.Delay(500);
 
             gameEditor.Repaint();
             gameEditor.ForceMenuTreeRebuild();

@@ -17,10 +17,10 @@ namespace VMFramework.Containers
         [SerializeField]
         protected bool isDebugging;
 
-        protected override void OnBeforeInit()
+        protected override void OnBeforeInitStart()
         {
-            base.OnBeforeInit();
-
+            base.OnBeforeInitStart();
+            
             OnRegisterEvent += OnRegister;
             OnUnregisterEvent += OnUnregister;
         }
@@ -29,7 +29,7 @@ namespace VMFramework.Containers
 
         private static void OnRegister(IContainer container)
         {
-            if (_instance.IsServerStarted)
+            if (instance.IsServerStarted)
             {
                 container.OnItemCountChangedEvent += OnContainerItemCountChanged;
                 container.ItemAddedEvent.AddCallback(OnItemAdded, GameEventPriority.TINY);
@@ -41,7 +41,7 @@ namespace VMFramework.Containers
         
         private static void OnUnregister(IContainer container)
         {
-            if (_instance.IsServerStarted)
+            if (instance.IsServerStarted)
             {
                 container.OnItemCountChangedEvent -= OnContainerItemCountChanged;
                 container.ItemAddedEvent.AddCallback(OnItemAdded, GameEventPriority.TINY);

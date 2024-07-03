@@ -16,7 +16,47 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: b1ae681a16c206344af334f20d176b3b
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: ab0eb9aa6a192104493c0978b621a17d
+    m_Address: EditorSettingFile
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 070cdfbc6c3d21c47ac2a0e6328b854b
+    m_Address: CoreSettingFile
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb113489d6a89ec4ba209093a179a4ad
+    m_Address: ResourcesManagementSettingFile
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc9bce69fb14e82408bc084d3ba1ec57
+    m_Address: BuiltInModulesSettingFile
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86b4d8257849eb046adcf5211fc06542
+    m_Address: UISettingFile
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 98909650f61c3514ab3e72bb79de6731
+    m_Address: GameSettingFile
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 193686f131859124888c3a565e5b10bf
+    m_Address: Assets/GameResources/Configurations/GeneralSettings
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: efab2546ca7801744b6762057f3143cc
+    m_Address: Assets/GameResources/Configurations/GamePrefabs
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 1a6674e20480896438d133d0bc5b4c2c, type: 2}
   m_SchemaSet:

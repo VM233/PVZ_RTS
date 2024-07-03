@@ -31,13 +31,13 @@ namespace TH.Spells
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Cast(ISpell spell, SpellCastInfo spellCastInfo)
         {
-            if (_instance.IsServerStarted)
+            if (instance.IsServerStarted)
             {
                 CastInstantaneously(spell.uuid, spellCastInfo);
             }
             else
             {
-                _instance.CastRequest(spell.uuid, spellCastInfo);
+                instance.CastRequest(spell.uuid, spellCastInfo);
             }
         }
 

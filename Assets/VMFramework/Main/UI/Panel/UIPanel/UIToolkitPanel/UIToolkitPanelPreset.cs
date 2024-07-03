@@ -22,7 +22,7 @@ namespace VMFramework.UI
             {
                 if (useDefaultPanelSettings)
                 {
-                    return GameCoreSetting.uiPanelGeneralSetting.GetPanelSetting(sortingOrder);
+                    return UISetting.uiPanelGeneralSetting.GetPanelSetting(sortingOrder);
                 }
 
                 return customPanelSettings;

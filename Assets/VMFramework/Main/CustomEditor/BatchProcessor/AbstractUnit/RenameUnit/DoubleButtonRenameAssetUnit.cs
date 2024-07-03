@@ -6,7 +6,7 @@ using UnityEngine;
 using VMFramework.Core.Editor;
 using Object = UnityEngine.Object;
 
-namespace VMFramework.Editor
+namespace VMFramework.Editor.BatchProcessor
 {
     public abstract class DoubleButtonRenameAssetUnit : DoubleButtonBatchProcessorUnit
     {

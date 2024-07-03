@@ -1,14 +1,15 @@
 ﻿#if UNITY_EDITOR
 using UnityEditor;
+using VMFramework.Core;
 
 namespace VMFramework.Editor
 {
     internal static class ResourcesFoldersCreator
     {
-        [MenuItem(FoldersCreationToolsName.FOLDERS_CREATION_TOOLS_MENU_CATEGORY + "Create Resources Folders")]
+        [MenuItem(UnityMenuItemNames.FOLDERS_CREATION_TOOLS + "Create Resources Folders")]
         private static void CreateResourcesFolders()
         {
-            var resourcesPath = IOUtility.assetsFolderPath + "/Resources";
+            var resourcesPath = CommonFolders.resourcesFolderPath;
 
             resourcesPath.CreateDirectory();
 

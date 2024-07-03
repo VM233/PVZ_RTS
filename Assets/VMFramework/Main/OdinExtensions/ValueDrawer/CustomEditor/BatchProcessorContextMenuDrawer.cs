@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Sirenix.OdinInspector.Editor;
 using UnityEditor;
+using VMFramework.Editor.BatchProcessor;
 
 namespace VMFramework.Editor
 {

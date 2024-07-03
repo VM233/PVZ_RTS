@@ -3,19 +3,19 @@ using PVZRTS.Entities;
 using PVZRTS.UI;
 using TH.Spells;
 using VMFramework.GameLogicArchitecture;
+using VMFramework.Procedure;
 
 namespace PVZRTS.GameCore
 {
-    public class GameSetting : GameCoreSetting
+    [ManagerCreationProvider(ManagerType.SettingCore)]
+    public sealed partial class GameSetting : GlobalSetting<GameSetting, GameSettingFile>
     {
-        public static GameSettingFile gameSettingFile => (GameSettingFile)gameCoreSettingsFile;
-
-        public static EntityGeneralSetting entityGeneralSetting => gameSettingFile.entityGeneralSetting;
+        public static EntityGeneralSetting entityGeneralSetting => globalSettingFile.entityGeneralSetting;
         
-        public static EntitySelectionGeneralSetting entitySelectionGeneralSetting => gameSettingFile.entitySelectionGeneralSetting;
+        public static EntitySelectionGeneralSetting entitySelectionGeneralSetting => globalSettingFile.entitySelectionGeneralSetting;
         
-        public static DamageGeneralSetting damageGeneralSetting => gameSettingFile.damageGeneralSetting;
+        public static DamageGeneralSetting damageGeneralSetting => globalSettingFile.damageGeneralSetting;
         
-        public static SpellGeneralSetting spellGeneralSetting => gameSettingFile.spellGeneralSetting;
+        public static SpellGeneralSetting spellGeneralSetting => globalSettingFile.spellGeneralSetting;
     }
 }

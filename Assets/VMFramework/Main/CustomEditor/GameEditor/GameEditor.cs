@@ -2,123 +2,133 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
 using Sirenix.Utilities.Editor;
 using UnityEditor;
-using UnityEditor.ShortcutManagement;
 using UnityEngine;
 using VMFramework.Core;
 using VMFramework.GameLogicArchitecture;
+using VMFramework.GameLogicArchitecture.Editor;
+using VMFramework.Procedure.Editor;
 
 namespace VMFramework.Editor.GameEditor
 {
     internal class GameEditor : OdinMenuEditorWindow
     {
-        private readonly AuxiliaryTools auxiliaryTools = new();
-
-        [MenuItem("Tools/" + GameEditorNames.GAME_EDITOR_NAME + " #G")]
-        // [Shortcut("Open " + GameEditorNames.GAME_EDITOR_NAME, KeyCode.G, ShortcutModifiers.Shift)]
+        [MenuItem(UnityMenuItemNames.VMFRAMEWORK + GameEditorNames.GAME_EDITOR_NAME + " #G")]
         private static void OpenWindow()
         {
-            GameCoreSettingFile.CheckGlobal();
-
             var window = CreateWindow<GameEditor>(GameEditorNames.GAME_EDITOR_NAME);
             window.position = GUIHelper.GetEditorWindowRect().AlignCenter(800, 600);
         }
 
         protected override OdinMenuTree BuildMenuTree()
         {
-            if (GameCoreSetting.gameCoreSettingsFile == null)
+            if (EditorInitializer.isInitialized == false && Application.isPlaying == false)
             {
-                return new OdinMenuTree(true);
+                var loadingPreviewTree = new OdinMenuTree(true)
+                {
+                    { "Loading...", new GameEditorLoadingPreview() }
+                };
+                
+                loadingPreviewTree.Selection.Add(loadingPreviewTree.RootMenuItem.ChildMenuItems[0]);
+                
+                return loadingPreviewTree;
             }
 
-            GameCoreSetting.gameCoreSettingsFile.AutoFindSetting();
+            OdinMenuTree tree = new(true);
 
-            var gameEditorSetting = GameCoreSetting.gameEditorGeneralSetting;
+            var nodesInfo = new Dictionary<IGameEditorMenuTreeNode, TreeNodeInfo>();
             
-            OdinMenuTree tree = new(true)
+            var nodes = new List<IGameEditorMenuTreeNode>();
+            
+            var leftNodes = new Queue<IGameEditorMenuTreeNode>();
+            
+            foreach (var globalSettingFile in GlobalSettingFileEditorManager.GetGlobalSettings())
             {
-                { GameEditorNames.AUXILIARY_TOOLS_CATEGORY, auxiliaryTools, EditorIcons.HamburgerMenu },
+                if (globalSettingFile is IGameEditorMenuTreeNode node)
                 {
-                    GameEditorNames.GENERAL_SETTINGS_CATEGORY, GameCoreSetting.gameCoreSettingsFile,
-                    SdfIconType.GearFill
-                },
-                { GameEditorNames.EDITOR_CATEGORY, null, EditorIcons.UnityLogo },
-                { GameEditorNames.CORE_CATEGORY, null, EditorIcons.StarPointer },
-                { GameEditorNames.RESOURCES_MANAGEMENT_CATEGORY, null, SdfIconType.Boxes },
-                { GameEditorNames.BUILT_IN_CATEGORY, null, SdfIconType.Inboxes },
-            };
+                    leftNodes.Enqueue(node);
+                    nodes.Add(node);
+                    nodesInfo.Add(node, new TreeNodeInfo()
+                    {
+                        parent = null,
+                        provider = null
+                    });
+                }
+            }
 
-            tree.DefaultMenuStyle.IconSize = 24.00f;
-            tree.Config.DrawSearchToolbar = true;
-
-            var generalSettingsPathDict = new Dictionary<GeneralSetting, string>();
-
-            foreach (var generalSetting in GameCoreSetting.GetAllGeneralSettings())
+            while (leftNodes.Count > 0)
             {
-                if (generalSetting is not IGameEditorMenuTreeNode generalSettingNode)
+                var leftNode = leftNodes.Dequeue();
+
+                if (leftNode is not IGameEditorMenuTreeNodesProvider provider)
                 {
                     continue;
                 }
 
-                var folderPath = generalSettingNode.folderPath;
-                folderPath = folderPath.Replace("\\", "/");
-                folderPath = folderPath.Trim('/');
-
-                var totalPath = string.Empty;
-
-                if (folderPath.IsNullOrEmptyAfterTrim() == false)
+                foreach (var child in provider.GetAllMenuTreeNodes())
                 {
-                    totalPath += folderPath;
-                }
-
-                totalPath += $"/{generalSettingNode.name}";
-
-                tree.Add(totalPath, generalSetting, generalSettingNode.icon);
-
-                generalSettingsPathDict.Add(generalSetting, totalPath);
-            }
-
-            foreach (var (generalSetting, totalPath) in generalSettingsPathDict)
-            {
-                if (generalSetting is IGameEditorMenuTreeNodesProvider
+                    if (nodesInfo.TryGetValue(child, out var existingInfo))
                     {
-                        isMenuTreeNodesVisible: true
-                    } menuTreeNodeProvider)
-                {
-                    var path = totalPath;
-
-                    var allNodes = menuTreeNodeProvider.GetAllMenuTreeNodes()?.ToList();
-
-                    if (allNodes == null)
-                    {
-                        Debug.LogWarning($"{menuTreeNodeProvider}获取的节点列表为Null");
+                        Debug.LogWarning(
+                            $"{child.name} has already provided by {existingInfo.provider.name}." +
+                            $"Cannot be provided by {provider.name} again!");
                         continue;
                     }
 
-                    if (menuTreeNodeProvider.autoStackMenuTreeNodes)
+                    leftNodes.Enqueue(child);
+                    nodes.Add(child);
+                    
+                    var parent = child.parentNode;
+                    if (parent == null && provider is IGameEditorMenuTreeNode providerNode)
                     {
-                        if (gameEditorSetting == null || allNodes.Count >
-                            gameEditorSetting.autoStackMenuTreeNodesMaxCount)
-                        {
-                            path += "/具体设置";
-                        }
+                        parent = providerNode;
                     }
-
-                    foreach (var menuTreeNode in allNodes)
+                    
+                    nodesInfo.Add(child, new()
                     {
-                        if (menuTreeNode == null)
-                        {
-                            continue;
-                        }
-
-                        tree.Add($"{path}/{menuTreeNode.name}", menuTreeNode, menuTreeNode.icon);
-                    }
+                        parent = parent,
+                        provider = provider
+                    });
                 }
             }
+
+            foreach (var (node, info) in nodesInfo)
+            {
+                if (info.parent == null)
+                {
+                    continue;
+                }
+                
+                if (nodesInfo.ContainsKey(info.parent) == false)
+                {
+                    Debug.LogWarning($"The parent of {node.name} is not found!" +
+                                     $"It doesn't belong to any provider.");
+                    info.parent = null;
+                }
+            }
+
+            foreach (var node in nodes)
+            {
+                var path = node.name;
+                
+                foreach (var parent in node.TraverseToRoot(false, node => nodesInfo[node].parent))
+                {
+                    path = parent.name + "/" + path;
+                }
+
+                if (node.isVisible == false)
+                {
+                    continue;
+                }
+                
+                tree.Add(path, node, node.icon);
+            }
+
+            tree.DefaultMenuStyle.IconSize = 24.00f;
+            tree.Config.DrawSearchToolbar = true;
 
             tree.EnumerateTree().ForEach(AddRightClickContextMenu);
 
@@ -172,13 +182,13 @@ namespace VMFramework.Editor.GameEditor
             
             GUILayout.Label(selected.Name);
 
-            if (selected.Value is not IGameEditorToolBarProvider toolBarProvider)
+            if (selected.Value is not IGameEditorToolbarProvider toolBarProvider)
             {
                 SirenixEditorGUI.EndHorizontalToolbar();
                 return;
             }
             
-            var tree = new StringPathTree<IGameEditorToolBarProvider.ToolbarButtonConfig>();
+            var tree = new StringPathTree<ToolbarButtonConfig>();
                         
             foreach (var buttonConfig in toolBarProvider.GetToolbarButtons())
             {

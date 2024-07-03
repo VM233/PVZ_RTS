@@ -1,7 +1,7 @@
 ﻿#if UNITY_EDITOR
 using VMFramework.Core;
 
-namespace VMFramework.Editor
+namespace VMFramework.Editor.BatchProcessor
 {
     public sealed class RenameAssetToSpecificCaseUnit : DoubleButtonRenameAssetUnit
     {

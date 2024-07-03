@@ -4,6 +4,7 @@ using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
 using VMFramework.GameLogicArchitecture;
+using VMFramework.GameLogicArchitecture.Editor;
 
 namespace VMFramework.OdinExtensions
 {
@@ -23,7 +24,7 @@ namespace VMFramework.OdinExtensions
                 return;
             }
 
-            if (GamePrefabWrapperQuery.TryGetGamePrefabWrapper(id, out var wrapper) == false)
+            if (GamePrefabWrapperQueryTools.TryGetGamePrefabWrapper(id, out var wrapper) == false)
             {
                 return;
             }

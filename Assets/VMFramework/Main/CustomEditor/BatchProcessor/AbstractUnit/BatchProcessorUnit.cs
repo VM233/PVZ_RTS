@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 
-namespace VMFramework.Editor
+namespace VMFramework.Editor.BatchProcessor
 {
     [HideDuplicateReferenceBox]
     [HideReferenceObjectPicker]

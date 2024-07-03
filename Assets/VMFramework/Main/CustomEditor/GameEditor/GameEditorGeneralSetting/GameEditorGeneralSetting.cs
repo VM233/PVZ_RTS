@@ -5,7 +5,7 @@ namespace VMFramework.Editor.GameEditor
 {
     public sealed partial class GameEditorGeneralSetting : GeneralSetting
     {
-        public int autoStackMenuTreeNodesMaxCount = 8;
+        
     }
 }
 

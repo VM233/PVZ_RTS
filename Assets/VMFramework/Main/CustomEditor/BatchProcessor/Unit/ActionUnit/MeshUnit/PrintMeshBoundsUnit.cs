@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VMFramework.Core;
 
-namespace VMFramework.Editor
+namespace VMFramework.Editor.BatchProcessor
 {
     public sealed class PrintMeshBoundsUnit : SingleButtonBatchProcessorUnit
     {

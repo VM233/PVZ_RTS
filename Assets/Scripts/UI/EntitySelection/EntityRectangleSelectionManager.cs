@@ -28,9 +28,9 @@ namespace PVZRTS.UI
         [SerializeField]
         private DecalProjector decalProjector;
 
-        protected override void OnBeforeInit()
+        protected override void OnBeforeInitStart()
         {
-            base.OnBeforeInit();
+            base.OnBeforeInitStart();
             
             lineRenderer.positionCount = 4;
             

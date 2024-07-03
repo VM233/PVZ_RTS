@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using VMFramework.Configuration;
 using VMFramework.GameLogicArchitecture;
+using VMFramework.UI;
 
 namespace VMFramework.OdinExtensions
 {
@@ -13,7 +14,7 @@ namespace VMFramework.OdinExtensions
     {
         protected override IEnumerable<ValueDropdownItem> GetValues()
         {
-            return GameCoreSetting.tooltipGeneralSetting.tooltipPriorityPresets.GetNameList();
+            return UISetting.tooltipGeneralSetting.tooltipPriorityPresets.GetNameList();
         }
     }
 }

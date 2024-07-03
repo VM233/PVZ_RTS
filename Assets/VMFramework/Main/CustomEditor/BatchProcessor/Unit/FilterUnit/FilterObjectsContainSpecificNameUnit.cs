@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using VMFramework.Core;
 
-namespace VMFramework.Editor
+namespace VMFramework.Editor.BatchProcessor
 {
     public sealed class FilterObjectsContainSpecificNameUnit : DoubleButtonBatchProcessorUnit
     {

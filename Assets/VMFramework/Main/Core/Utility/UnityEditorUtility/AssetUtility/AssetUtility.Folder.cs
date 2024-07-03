@@ -8,6 +8,18 @@ namespace VMFramework.Core.Editor
 {
     public static partial class AssetUtility
     {
+        #region Create Folder By Asset Path
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void CreateFolderByAssetPath(this string assetPath)
+        {
+            var absolutePath = assetPath.ConvertAssetPathToAbsolutePath();
+
+            absolutePath.GetDirectoryPath().CreateDirectory();
+        }
+
+        #endregion
+        
         #region Get All Assets Recursively
 
         public static IEnumerable<Object> GetAllAssetsRecursively(

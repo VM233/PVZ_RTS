@@ -11,8 +11,6 @@ namespace VMFramework.GameLogicArchitecture
         string INameOwner.name => "Game Type";
 
         Icon IGameEditorMenuTreeNode.icon => new(SdfIconType.Collection);
-
-        string IGameEditorMenuTreeNode.folderPath => GameEditorNames.CORE_CATEGORY;
     }
 }
 #endif

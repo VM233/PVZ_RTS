@@ -12,8 +12,6 @@ namespace VMFramework.ResourcesManagement
         string INameOwner.name => "Audio";
 
         Icon IGameEditorMenuTreeNode.icon => SdfIconType.MusicNoteBeamed;
-
-        string IGameEditorMenuTreeNode.folderPath => GameEditorNames.RESOURCES_MANAGEMENT_CATEGORY;
     }
 }
 #endif

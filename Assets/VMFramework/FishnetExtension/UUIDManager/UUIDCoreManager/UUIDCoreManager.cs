@@ -201,7 +201,7 @@ namespace VMFramework.Network
             }
             else
             {
-                _instance._Observe(uuid, info.owner.isDirty);
+                instance._Observe(uuid, info.owner.isDirty);
             }
         }
 
@@ -259,7 +259,7 @@ namespace VMFramework.Network
             }
             else
             {
-                _instance._Unobserve(uuid);
+                instance._Unobserve(uuid);
             }
         }
         

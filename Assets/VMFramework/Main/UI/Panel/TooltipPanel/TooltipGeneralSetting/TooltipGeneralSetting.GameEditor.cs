@@ -12,8 +12,6 @@ namespace VMFramework.UI
         string INameOwner.name => "Tooltip";
 
         Icon IGameEditorMenuTreeNode.icon => SdfIconType.CardHeading;
-
-        string IGameEditorMenuTreeNode.folderPath => GameCoreSetting.uiPanelGeneralSetting.GetNodePath();
     }
 }
 #endif

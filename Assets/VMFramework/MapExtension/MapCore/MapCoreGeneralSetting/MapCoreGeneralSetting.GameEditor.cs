@@ -12,8 +12,6 @@ namespace VMFramework.Map
         string INameOwner.name => "Map Core";
 
         Icon IGameEditorMenuTreeNode.icon => SdfIconType.PinMap;
-
-        string IGameEditorMenuTreeNode.folderPath => GameEditorNames.BUILT_IN_CATEGORY;
     }
 }
 #endif

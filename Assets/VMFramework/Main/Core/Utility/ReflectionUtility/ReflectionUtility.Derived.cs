@@ -98,6 +98,12 @@ namespace VMFramework.Core
                 includingGenericDefinition);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<Type> GetDerivedInstantiableClasses(this Type baseType, bool includingSelf)
+        {
+            return GetDerivedClasses(baseType, includingSelf, false).ExcludeAbstractAndInterface();
+        }
+
         #endregion
 
         #region IsDerivedFrom

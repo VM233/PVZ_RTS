@@ -8,7 +8,7 @@ namespace VMFramework.Editor
     {
         public const string EDITOR_NAME = "Manager Viewer";
 
-        [MenuItem("Tools/" + EDITOR_NAME)]
+        [MenuItem(UnityMenuItemNames.VMFRAMEWORK + EDITOR_NAME)]
         public static void OpenWindow() => GetSimpleWindow<ManagerViewer>(EDITOR_NAME);
     }
 }
