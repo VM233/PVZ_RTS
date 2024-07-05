@@ -1,5 +1,4 @@
 ﻿using System;
-using VMFramework.Configuration;
 using Sirenix.OdinInspector;
 using VMFramework.OdinExtensions;
 

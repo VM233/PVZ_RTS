@@ -1,6 +1,5 @@
 ﻿using UnityEngine.Localization;
 using VMFramework.Configuration;
-using VMFramework.GameLogicArchitecture;
 
 namespace VMFramework.UI
 {

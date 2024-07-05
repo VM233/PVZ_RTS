@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
 using UnityEditor;
-using UnityEditor.AddressableAssets;
-using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
 using VMFramework.Core;
 using VMFramework.Core.Editor;
@@ -52,6 +50,13 @@ namespace VMFramework.GameLogicArchitecture.Editor
                     Debug.LogWarning($"{nameof(IGlobalSettingFile)} at path {path} is not of type {type}.");
                 }
             }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetGlobalSettingPath(this IGlobalSettingFile globalSettingFile, out string path,
+            out string fileName)
+        {
+            return TryGetGlobalSettingPath(globalSettingFile.GetType(), out path, out fileName);
         }
 
         public static bool TryGetGlobalSettingPath(Type globalSettingFileType, out string path, out string fileName)

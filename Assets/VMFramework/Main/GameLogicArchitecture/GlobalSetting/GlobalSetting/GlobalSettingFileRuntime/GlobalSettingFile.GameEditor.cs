@@ -1,6 +1,5 @@
 ﻿#if UNITY_EDITOR
 using System.Collections.Generic;
-using VMFramework.Core;
 using VMFramework.Core.Editor;
 using VMFramework.Editor;
 using VMFramework.Editor.GameEditor;

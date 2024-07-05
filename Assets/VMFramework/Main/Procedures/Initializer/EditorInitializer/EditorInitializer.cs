@@ -19,6 +19,15 @@ namespace VMFramework.Procedure.Editor
         private static void InitializationEntry()
         {
             EditorApplication.delayCall += Initialize;
+            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+        }
+
+        private static void OnPlayModeStateChanged(PlayModeStateChange state)
+        {
+            if (state == PlayModeStateChange.EnteredEditMode)
+            {
+                Initialize();
+            }
         }
         
         [MenuItem(UnityMenuItemNames.EDITOR_INITIALIZATION + "Editor Initialize")]

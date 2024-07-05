@@ -2,7 +2,6 @@
 using Sirenix.OdinInspector;
 using VMFramework.Editor;
 using VMFramework.Editor.GameEditor;
-using VMFramework.Localization;
 
 namespace VMFramework.GameLogicArchitecture
 {

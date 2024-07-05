@@ -4,7 +4,6 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using VMFramework.Configuration;
 using VMFramework.Core;
-using VMFramework.GameLogicArchitecture;
 using VMFramework.OdinExtensions;
 
 namespace VMFramework.UI

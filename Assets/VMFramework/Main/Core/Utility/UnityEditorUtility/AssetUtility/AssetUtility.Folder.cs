@@ -43,6 +43,23 @@ namespace VMFramework.Core.Editor
 
         #endregion
 
+        #region Get Folder Object
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static DefaultAsset GetFolderObject(this string assetPath)
+        {
+            return AssetDatabase.LoadAssetAtPath<DefaultAsset>(assetPath);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetFolderObject(this string assetPath, out DefaultAsset folderObject)
+        {
+            folderObject = AssetDatabase.LoadAssetAtPath<DefaultAsset>(assetPath);
+            return folderObject != null;
+        }
+
+        #endregion
+
         #region Is Folder
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

@@ -195,8 +195,7 @@ namespace VMFramework.Core.Editor
                 return;
             }
             
-            Undo.DestroyObjectImmediate(obj);
-            AssetDatabase.Refresh();
+            AssetDatabase.DeleteAsset(obj.GetAssetPath());
         }
 
         #endregion

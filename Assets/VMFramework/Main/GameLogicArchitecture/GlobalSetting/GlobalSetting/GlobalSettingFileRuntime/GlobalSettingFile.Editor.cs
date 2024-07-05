@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
-using UnityEngine;
 using VMFramework.Core;
 using VMFramework.Core.Editor;
 using VMFramework.GameLogicArchitecture.Editor;
@@ -12,23 +11,11 @@ namespace VMFramework.GameLogicArchitecture
     public partial class GlobalSettingFile
     {
         [Button(ButtonSizes.Medium), TabGroup(TAB_GROUP_NAME, DEBUGGING_CATEGORY)]
-        public void MoveGeneralSettingsToNewFolder()
-        {
-            foreach (var generalSetting in GetAllGeneralSettings())
-            {
-                if (generalSetting is Object obj)
-                {
-                    obj.MoveAssetToNewFolder(EditorSetting.globalSettingFile.generalSettingsAssetFolderPath);
-                }
-            }
-        }
-        
-        [Button(ButtonSizes.Medium), TabGroup(TAB_GROUP_NAME, DEBUGGING_CATEGORY)]
         public void AutoFindSettings()
         {
             foreach (var fieldInfo in GetAllGeneralSettingsFields())
             {
-                if (fieldInfo.GetValue(this) != null)
+                if (fieldInfo.GetValue(this).IsUnityNull() == false)
                 {
                     continue;
                 }

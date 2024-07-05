@@ -1,6 +1,6 @@
 ﻿#if UNITY_EDITOR
-using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine;
 using VMFramework.Core;
 using VMFramework.Core.Editor;
@@ -57,11 +57,39 @@ namespace VMFramework.GameLogicArchitecture.Editor
         }
         
         [Button(ButtonSizes.Medium), TabGroup(TAB_GROUP_NAME, RESOURCES_PATH_CATEGORY)]
+        public void MoveGeneralSettingsToNewFolder()
+        {
+            foreach (var generalSetting in GlobalSettingCollector.GetAllGeneralSettings())
+            {
+                if (generalSetting is Object obj)
+                {
+                    obj.MoveAssetToNewFolder(EditorSetting.generalSettingsAssetFolderPath);
+                }
+            }
+        }
+        
+        [Button(ButtonSizes.Medium), TabGroup(TAB_GROUP_NAME, RESOURCES_PATH_CATEGORY)]
         public void MoveGamePrefabWrappersToNewFolder()
         {
             foreach (var wrapper in GamePrefabWrapperQueryTools.GetAllGamePrefabWrappers())
             {
                 wrapper.MoveToDefaultFolder();
+            }
+        }
+        
+        [Button(ButtonSizes.Medium), TabGroup(TAB_GROUP_NAME, RESOURCES_PATH_CATEGORY)]
+        public void MakeSettingsAddressable()
+        {
+            GlobalSettingFileAddressableManager.AutoGroupAllGlobalSettings();
+
+            if (generalSettingsAssetFolderPath.TryGetFolderObject(out var generalSettingsFolder))
+            {
+                generalSettingsFolder.CreateOrMoveEntryToDefaultGroup();
+            }
+            
+            if (gamePrefabsAssetFolderPath.TryGetFolderObject(out var gamePrefabsFolder))
+            {
+                gamePrefabsFolder.CreateOrMoveEntryToDefaultGroup();
             }
         }
     }

@@ -1,5 +1,4 @@
-﻿using EnumsNET;
-using VMFramework.GameLogicArchitecture;
+﻿using VMFramework.GameLogicArchitecture;
 using VMFramework.Core;
 using Sirenix.OdinInspector;
 using UnityEngine;

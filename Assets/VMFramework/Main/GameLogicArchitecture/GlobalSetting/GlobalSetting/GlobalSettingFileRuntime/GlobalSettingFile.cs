@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using VMFramework.Configuration;
 using VMFramework.Core;
 using VMFramework.Core.Linq;
 using VMFramework.Procedure;
@@ -15,16 +16,17 @@ namespace VMFramework.GameLogicArchitecture
         {
             base.CheckSettings();
 
-            foreach (var fieldInfo in GetType().GetFieldsByReturnType(typeof(IGeneralSetting),
-                         ReflectionUtility.ALL_INSTANCE_FIELDS_FLAGS))
-            {
-                if (fieldInfo.GetValue(this) is not IGeneralSetting setting)
-                {
-                    throw new ArgumentNullException($"{fieldInfo.Name}");
-                }
-                
-                setting.CheckSettings();
-            }
+            GetAllGeneralSettings().CheckSettings();
+            // foreach (var fieldInfo in GetType().GetFieldsByReturnType(typeof(IGeneralSetting),
+            //              ReflectionUtility.ALL_INSTANCE_FIELDS_FLAGS))
+            // {
+            //     if (fieldInfo.GetValue(this) is not IGeneralSetting setting)
+            //     {
+            //         throw new ArgumentNullException($"{fieldInfo.Name}");
+            //     }
+            //     
+            //     setting.CheckSettings();
+            // }
         }
 
         IEnumerable<InitializationAction> IInitializer.GetInitializationActions()

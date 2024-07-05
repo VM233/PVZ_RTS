@@ -3,7 +3,6 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 using VMFramework.Core;
-using VMFramework.GameLogicArchitecture;
 using VMFramework.Procedure;
 
 namespace VMFramework.UI

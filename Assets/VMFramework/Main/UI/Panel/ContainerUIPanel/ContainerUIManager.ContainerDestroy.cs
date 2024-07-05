@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using VMFramework.Containers;
 using VMFramework.Core.Linq;
-using VMFramework.GameEvents;
 using VMFramework.Procedure;
 
 namespace VMFramework.UI

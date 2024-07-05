@@ -1,6 +1,5 @@
 ﻿using Sirenix.OdinInspector;
 using VMFramework.Configuration;
-using VMFramework.Procedure;
 
 namespace VMFramework.GameLogicArchitecture
 {

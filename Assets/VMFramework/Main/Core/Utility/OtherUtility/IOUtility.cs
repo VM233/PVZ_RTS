@@ -5,11 +5,8 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 #if UNITY_EDITOR
-using UnityEditor;
 #endif
-using UnityEngine;
 using VMFramework.Core;
-using Object = UnityEngine.Object;
 
 public static class IOUtility
 {

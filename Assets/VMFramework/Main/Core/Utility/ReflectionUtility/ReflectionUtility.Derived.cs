@@ -103,6 +103,21 @@ namespace VMFramework.Core
         {
             return GetDerivedClasses(baseType, includingSelf, false).ExcludeAbstractAndInterface();
         }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static IEnumerable<T> GetInstancesOfDerivedClasses<T>(bool includingSelf)
+        {
+            foreach (var type in typeof(T).GetDerivedInstantiableClasses(includingSelf))
+            {
+                yield return (T)type.CreateInstance();
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void AddInstancesOfDerivedClasses<T>(this ICollection<T> collection, bool includingSelf)
+        {
+            collection.AddRange(GetInstancesOfDerivedClasses<T>(includingSelf));
+        }
 
         #endregion
 

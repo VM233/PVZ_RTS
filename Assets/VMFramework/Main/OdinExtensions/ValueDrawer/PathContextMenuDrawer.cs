@@ -48,7 +48,7 @@ namespace VMFramework.OdinExtensions
                 return;
             }
             
-            genericMenu.AddItem(new GUIContent("Open in Explorer"), false, () =>
+            genericMenu.AddItem("Open in Explorer", () =>
             {
                 path.OpenDirectory(false);
             });

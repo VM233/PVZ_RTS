@@ -5,7 +5,6 @@ using VMFramework.Configuration;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UIElements;
-using VMFramework.Core.Linq;
 using VMFramework.GameLogicArchitecture;
 using VMFramework.OdinExtensions;
 using VMFramework.Procedure;
