@@ -162,108 +162,15 @@ MonoBehaviour:
     - Name: maxCooldown
       Entry: 4
       Data: 1
-    - Name: spellUnitActions
+    - Name: spellUnitsID
       Entry: 7
-      Data: 6|System.Collections.Generic.List`1[[TH.Spells.ISpellUnitAction, Assembly-CSharp]],
-        mscorlib
+      Data: 6|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
-      Entry: 7
-      Data: 7|TH.Spells.LinearBulletUnitAction, Assembly-CSharp
-    - Name: directionRotationType
-      Entry: 3
-      Data: 0
-    - Name: scatterAngle
-      Entry: 7
-      Data: 8|VMFramework.Configuration.SingleVectorChooserConfig`1[[System.Single,
-        mscorlib]], Assembly-CSharp
-    - Name: value
-      Entry: 4
-      Data: 30
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: shuffleProjectiles
-      Entry: 5
-      Data: false
-    - Name: numbers
-      Entry: 7
-      Data: 9|VMFramework.Configuration.SingleVectorChooserConfig`1[[System.Int32,
-        mscorlib]], Assembly-CSharp
-    - Name: value
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: shootingInterval
-      Entry: 7
-      Data: 10|VMFramework.Configuration.SingleVectorChooserConfig`1[[System.Single,
-        mscorlib]], Assembly-CSharp
-    - Name: value
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: projectileSpawnPosition
-      Entry: 3
-      Data: 0
-    - Name: delay
-      Entry: 7
-      Data: 11|VMFramework.Configuration.SingleVectorChooserConfig`1[[System.Single,
-        mscorlib]], Assembly-CSharp
-    - Name: value
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: isMelee
-      Entry: 5
-      Data: false
-    - Name: physicalAttack
-      Entry: 7
-      Data: 12|VMFramework.Configuration.SingleVectorChooserConfig`1[[System.Int32,
-        mscorlib]], Assembly-CSharp
-    - Name: value
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: magicalAttack
-      Entry: 7
-      Data: 13|VMFramework.Configuration.SingleVectorChooserConfig`1[[System.Int32,
-        mscorlib]], Assembly-CSharp
-    - Name: value
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: linearProjectileID
-      Entry: 7
-      Data: 14|VMFramework.Configuration.SingleGamePrefabIDChooserValue`1[[PVZRTS.Entities.ILinearBulletConfig,
-        Assembly-CSharp]], Assembly-CSharp
-    - Name: value
-      Entry: 7
-      Data: VMFramework.Configuration.GamePrefabIDConfig`1[[PVZRTS.Entities.ILinearBulletConfig,
-        Assembly-CSharp]], Assembly-CSharp
-    - Name: id
       Entry: 1
-      Data: test_linear_projectile_entity
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+      Data: pea_shooting_1_spell_unit
     - Name: 
       Entry: 13
       Data: 

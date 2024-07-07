@@ -7,7 +7,7 @@ namespace TH.Spells
         {
             base.OnInspectorInit();
 
-            spellUnitActions ??= new();
+            spellUnitsID ??= new();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using FishNet;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace PVZRTS.Entities
 {

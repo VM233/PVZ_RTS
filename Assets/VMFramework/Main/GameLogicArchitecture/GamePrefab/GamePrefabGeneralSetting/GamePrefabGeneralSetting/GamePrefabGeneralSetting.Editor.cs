@@ -16,9 +16,7 @@ namespace VMFramework.GameLogicArchitecture
         {
             base.OnInspectorInit();
 
-            initialGamePrefabWrappers ??= new();
-
-            initialGamePrefabWrappers.RemoveAll(wrapper => wrapper == null);
+            RefreshInitialGamePrefabWrappers();
         }
         
         private void OnInitialGamePrefabWrappersChanged()

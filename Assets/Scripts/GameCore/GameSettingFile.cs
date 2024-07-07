@@ -15,5 +15,6 @@ namespace PVZRTS.GameCore
         public EntitySelectionGeneralSetting entitySelectionGeneralSetting;
         public DamageGeneralSetting damageGeneralSetting;
         public SpellGeneralSetting spellGeneralSetting;
+        public SpellUnitGeneralSetting spellUnitGeneralSetting;
     }
 }

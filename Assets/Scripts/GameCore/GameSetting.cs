@@ -17,5 +17,7 @@ namespace PVZRTS.GameCore
         public static DamageGeneralSetting damageGeneralSetting => globalSettingFile.damageGeneralSetting;
         
         public static SpellGeneralSetting spellGeneralSetting => globalSettingFile.spellGeneralSetting;
+        
+        public static SpellUnitGeneralSetting spellUnitGeneralSetting => globalSettingFile.spellUnitGeneralSetting;
     }
 }

@@ -304,22 +304,6 @@ public static class IOUtility
     }
 
     /// <summary>
-    /// 在资源管理器中打开目录
-    /// </summary>
-    /// <param name="directoryPath"></param>
-    /// <param name="createIfNotExisted"></param>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public static void OpenDirectory(this string directoryPath, bool createIfNotExisted)
-    {
-        directoryPath = directoryPath.Replace('/', '\\');
-        if (createIfNotExisted)
-        {
-            CreateDirectory(directoryPath);
-        }
-        Process.Start("explorer.exe", directoryPath);
-    }
-
-    /// <summary>
     /// 获取目录下的所有文件路径
     /// </summary>
     /// <param name="directoryPath"></param>

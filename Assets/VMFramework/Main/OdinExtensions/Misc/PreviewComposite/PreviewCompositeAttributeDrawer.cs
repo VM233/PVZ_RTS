@@ -10,7 +10,7 @@ using VMFramework.Core;
 namespace VMFramework.OdinExtensions
 {
     [DrawerPriority(0, 0, 50)]
-    public class PreviewCompositeAttributeDrawer : OdinAttributeDrawer<PreviewCompositeAttribute>
+    internal sealed class PreviewCompositeAttributeDrawer : OdinAttributeDrawer<PreviewCompositeAttribute>
     {
         private ValueResolver<string> suffixResolver;
 

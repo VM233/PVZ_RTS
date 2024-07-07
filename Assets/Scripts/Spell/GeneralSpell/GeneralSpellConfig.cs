@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using VMFramework.Configuration;
 using VMFramework.OdinExtensions;
 
 namespace TH.Spells
@@ -10,22 +9,9 @@ namespace TH.Spells
     {
         public override Type gameItemType => typeof(GeneralSpell);
 
-        [LabelText("技能单元"), TabGroup(TAB_GROUP_NAME, SPELL_CATEGORY)]
+        [TabGroup(TAB_GROUP_NAME, SPELL_CATEGORY)]
+        [GamePrefabID(typeof(ISpellUnitConfig))]
         [IsNotNullOrEmpty]
-        public List<ISpellUnitAction> spellUnitActions = new();
-
-        public override void CheckSettings()
-        {
-            base.CheckSettings();
-
-            spellUnitActions.CheckSettings();
-        }
-
-        protected override void OnInit()
-        {
-            base.OnInit();
-
-            spellUnitActions.Init();
-        }
+        public List<string> spellUnitsID = new();
     }
 }

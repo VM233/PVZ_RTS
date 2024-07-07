@@ -28,10 +28,10 @@ namespace VMFramework.GameLogicArchitecture
 
         protected override IEnumerable<ToolbarButtonConfig> GetToolbarButtons()
         {
-            yield return new(EditorNames.AUTO_FIND_SETTINGS_BUTTON_PATH, AutoFindSettings);
-            yield return new(EditorNames.AUTO_FIND_AND_CREATE_SETTINGS_BUTTON_PATH,
+            yield return new(EditorNames.AUTO_FIND_SETTINGS_PATH, AutoFindSettings);
+            yield return new(EditorNames.AUTO_FIND_AND_CREATE_SETTINGS_PATH,
                 AutoFindAndCreateSettings);
-            yield return new(EditorNames.OPEN_GLOBAL_SETTING_SCRIPT_BUTTON_PATH, OpenGlobalSettingScript);
+            yield return new(EditorNames.OPEN_GLOBAL_SETTING_SCRIPT_PATH, OpenGlobalSettingScript);
             
             foreach (var config in base.GetToolbarButtons())
             {

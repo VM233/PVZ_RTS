@@ -1,5 +1,4 @@
 ﻿#if UNITY_EDITOR
-using PVZRTS.GameCore;
 using VMFramework.Editor.GameEditor;
 using VMFramework.GameLogicArchitecture;
 

@@ -7,7 +7,7 @@ namespace PVZRTS.Entities
     {
         #region Meta Data
 
-        public override Type baseGamePrefabType => typeof(EntityConfig);
+        public override Type baseGamePrefabType => typeof(IEntityConfig);
 
         public override string gameItemName => nameof(Entity);
 

@@ -185,26 +185,30 @@ namespace VMFramework.Core.Editor
 
         #endregion
 
-        #region Delete Asset
-        
-        public static void DeleteAsset(this Object obj)
-        {
-            if (obj.IsAsset() == false)
-            {
-                Debug.LogWarning($"{obj}不是Asset，无法删除");
-                return;
-            }
-            
-            AssetDatabase.DeleteAsset(obj.GetAssetPath());
-        }
-
-        #endregion
-
         #region Is Asset
         
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsAsset(this Object obj)
         {
             return AssetDatabase.Contains(obj);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool IsAssetWithWarning(this Object obj)
+        {
+            if (obj == null)
+            {
+                Debug.LogWarning("Object is null, cannot check if it is an asset");
+                return false;
+            }
+
+            if (AssetDatabase.Contains(obj) == false)
+            {
+                Debug.LogWarning($"Object {obj.name} is not an asset");
+                return false;
+            }
+            
+            return true;
         }
 
         #endregion

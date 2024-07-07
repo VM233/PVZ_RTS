@@ -1,5 +1,4 @@
-﻿using System;
-using PVZRTS.Properties;
+﻿using PVZRTS.Properties;
 using VMFramework.GameLogicArchitecture;
 using VMFramework.Network;
 using VMFramework.Timers;
@@ -15,7 +14,11 @@ namespace TH.Spells
         public void SetToMaxCooldown();
         
         public void Cast(SpellCastInfo spellCastInfo);
+        
+        public bool IsCasting();
 
         public void Abort(SpellAbortInfo spellAbortInfo);
+        
+        public bool IsAborted();
     }
 }

@@ -20,7 +20,7 @@ namespace VMFramework.Core.Editor
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string ConvertAssetPathToAbsolutePath(this string assetPath)
         {
-            return CommonFolders.projectFolderPath.PathCombine(assetPath);
+            return CommonFolders.projectFolderPath.PathCombine(assetPath).ReplaceToDirectorySeparator();
         }
 
         #endregion
@@ -64,6 +64,62 @@ namespace VMFramework.Core.Editor
         #region Get Asset Path
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetAssetPath(this Object obj, out string assetPath)
+        {
+            if (obj.IsAsset() == false)
+            {
+                assetPath = null;
+                return false;
+            }
+            
+            assetPath = obj.GetAssetPath();
+            
+            return true;
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetAssetPathWithWarning(this Object obj, out string assetPath)
+        {
+            if (obj.IsAssetWithWarning() == false)
+            {
+                assetPath = null;
+                return false;
+            }
+            
+            assetPath = obj.GetAssetPath();
+            
+            return true;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetAssetAbsolutePath(this Object obj, out string absolutePath)
+        {
+            if (obj.IsAsset() == false)
+            {
+                absolutePath = null;
+                return false;
+            }
+            
+            absolutePath = obj.GetAssetAbsolutePath();
+            
+            return true;
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetAssetAbsolutePathWithWarning(this Object obj, out string absolutePath)
+        {
+            if (obj.IsAssetWithWarning() == false)
+            {
+                absolutePath = null;
+                return false;
+            }
+            
+            absolutePath = obj.GetAssetAbsolutePath();
+            
+            return true;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string GetAssetPath(this Object obj)
         {
             return AssetDatabase.GetAssetPath(obj);
@@ -80,8 +136,7 @@ namespace VMFramework.Core.Editor
         {
             return asset == null
                 ? string.Empty
-                : CommonFolders.projectFolderPath.PathCombine(asset.GetAssetPath())
-                    .Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
+                : CommonFolders.projectFolderPath.PathCombine(asset.GetAssetPath()).ReplaceToDirectorySeparator();
         }
 
         #endregion

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace VMFramework.OdinExtensions
 {
-    public class IsGamePrefabIDAttributeDrawer : MultipleValidationAttributeDrawer<IsGamePrefabIDAttribute>
+    internal sealed class IsGamePrefabIDAttributeDrawer : MultipleValidationAttributeDrawer<IsGamePrefabIDAttribute>
     {
         protected override IEnumerable<ValidationResult> GetValidationResults(object value, GUIContent label)
         {

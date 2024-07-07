@@ -46,19 +46,32 @@ namespace VMFramework.Core.Editor
                 return true;
             }
 
-            Debug.LogWarning($"打开Class:{type}失败，因为同名脚本文件{typeName}.cs不存在");
+            Debug.LogWarning($"Failed to open script of type {type.Name}, " +
+                             $"because no script file named {typeName}.cs exists in the project.");
             return false;
         }
         
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void OpenScriptOfObject(this object obj)
         {
+            if (obj == null)
+            {
+                Debug.LogWarning($"{nameof(obj)} is null! Can't open script.");
+                return;
+            }
+            
             obj.GetType().OpenScriptOfType();
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void OpenScriptOfObjects<TObject>(this IEnumerable<TObject> objects)
         {
+            if (objects == null)
+            {
+                Debug.LogWarning($"{nameof(objects)} is null! Can't open script.");
+                return;
+            }
+            
             objects.Examine(obj => obj.OpenScriptOfObject());
         }
     }

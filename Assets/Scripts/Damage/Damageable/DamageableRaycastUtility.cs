@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace PVZRTS.Damage
+﻿namespace PVZRTS.Damage
 {
     public static class DamageableRaycastUtility
     {

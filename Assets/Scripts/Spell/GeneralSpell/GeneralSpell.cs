@@ -1,15 +1,43 @@
-using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using VMFramework.Core;
+using VMFramework.GameLogicArchitecture;
 
 namespace TH.Spells
 {
     public sealed class GeneralSpell : Spell
     {
         private GeneralSpellConfig generalSpellConfig => (GeneralSpellConfig)gamePrefab;
-
+        
+        [ShowInInspector]
         private bool isAborted;
-        private SpellAbortInfo spellAbortInfo;
+        [ShowInInspector]
+        private bool isCasting;
+
+        [ShowInInspector]
+        private readonly List<ISpellUnit> spellUnits = new();
+        private readonly List<UniTask> spellUnitTasks = new();
+
+        protected override void OnFirstCreated()
+        {
+            base.OnFirstCreated();
+
+            foreach (var spellUnitID in generalSpellConfig.spellUnitsID)
+            {
+                var spellUnit = IGameItem.Create<ISpellUnit>(spellUnitID);
+                
+                spellUnits.Add(spellUnit);
+            }
+        }
+
+        protected override void OnCreate()
+        {
+            base.OnCreate();
+            
+            spellUnits.ResetArguments();
+        }
 
         public override async void Cast(SpellCastInfo spellCastInfo)
         {
@@ -23,37 +51,38 @@ namespace TH.Spells
                 return;
             }
 
-            int completedCount = 0;
             isAborted = false;
+            isCasting = true;
 
-            var operationToken = new SpellOperationToken()
+            foreach (var spellUnitAction in spellUnits)
             {
-                Abort = () => isAborted = true,
-                IsAborted = () => isAborted,
-                GetAbortInfo = () => spellAbortInfo,
-                Complete = () => completedCount++,
-            };
-
-            foreach (var spellUnitAction in generalSpellConfig.spellUnitActions)
-            {
-                spellUnitAction.Examine(this, spellCastInfo, operationToken);
+                spellUnitTasks.Add(spellUnitAction.Examine(this, spellCastInfo));
             }
 
-            await UniTask.WaitUntil(() =>
-                isAborted || completedCount >= generalSpellConfig.spellUnitActions.Count);
+            await UniTask.WhenAll(spellUnitTasks);
 
             cooldown = generalSpellConfig.maxCooldown;
+            isAborted = false;
+            isCasting = false;
         }
 
         public override void Abort(SpellAbortInfo spellAbortInfo)
         {
-            if (cooldown > 0)
+            if (isCasting == false)
             {
                 return;
             }
 
             isAborted = true;
-            this.spellAbortInfo = spellAbortInfo;
+
+            foreach (var spellUnit in spellUnits)
+            {
+                spellUnit.Abort(spellAbortInfo);
+            }
         }
+
+        public override bool IsCasting() => isCasting;
+
+        public override bool IsAborted() => isAborted;
     }
 }

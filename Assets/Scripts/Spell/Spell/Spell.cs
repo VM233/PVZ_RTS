@@ -1,14 +1,11 @@
 ﻿using System;
 using VMFramework.GameLogicArchitecture;
 using VMFramework.UI;
-using FishNet.Connection;
 using PVZRTS.Properties;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UIElements;
 using VMFramework.Core;
-using VMFramework.Network;
-using VMFramework.Properties;
 using VMFramework.Timers;
 
 namespace TH.Spells
@@ -34,6 +31,7 @@ namespace TH.Spells
 
         private double expectedTime;
 
+        [ShowInInspector]
         public float cooldown
         {
             get => (float)(expectedTime - TimerManager.currentTime).ClampMin(0);
@@ -94,8 +92,12 @@ namespace TH.Spells
         #region Cast & Abort
 
         public abstract void Cast(SpellCastInfo spellCastInfo);
+        
+        public abstract bool IsCasting();
 
         public abstract void Abort(SpellAbortInfo spellAbortInfo);
+
+        public abstract bool IsAborted();
 
         #endregion
 

@@ -29,3 +29,5 @@ MonoBehaviour:
     type: 2}
   spellGeneralSetting: {fileID: 11400000, guid: 2b2f69dcf44b01444b028cde6e11c2d9,
     type: 2}
+  spellUnitGeneralSetting: {fileID: 11400000, guid: 1f10966085e19f94eb26d7e5221bbd35,
+    type: 2}

@@ -1,5 +1,6 @@
 ﻿using FishNet.Serializing;
 using PVZRTS.Properties;
+using Sirenix.OdinInspector;
 using TH.Spells;
 using UnityEngine;
 using VMFramework.GameLogicArchitecture;
@@ -13,6 +14,7 @@ namespace PVZRTS.Entities
         
         protected IShooterPlantController shooterPlantController => (IShooterPlantController)controller;
         
+        [ShowInInspector]
         public ISpell shooterSpell { get; private set; }
 
         protected override void OnCreate()

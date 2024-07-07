@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using VMFramework.Core;
+﻿using VMFramework.Core;
 
 namespace PVZRTS.Entities
 {

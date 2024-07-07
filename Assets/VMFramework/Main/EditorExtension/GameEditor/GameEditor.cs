@@ -9,6 +9,7 @@ using UnityEditor;
 using UnityEngine;
 using VMFramework.Core;
 using VMFramework.Core.Linq;
+using VMFramework.GameLogicArchitecture;
 using VMFramework.GameLogicArchitecture.Editor;
 using VMFramework.Procedure.Editor;
 
@@ -23,10 +24,10 @@ namespace VMFramework.Editor.GameEditor
             contextMenuModifiers.AddInstancesOfDerivedClasses(false);
         }
 
-        [MenuItem(UnityMenuItemNames.VMFRAMEWORK + GameEditorNames.GAME_EDITOR_NAME + " #G", false, 100)]
+        [MenuItem(UnityMenuItemNames.VMFRAMEWORK + GameEditorNames.GAME_EDITOR + " #G", false, 100)]
         private static void OpenWindow()
         {
-            var window = CreateWindow<GameEditor>(GameEditorNames.GAME_EDITOR_NAME);
+            var window = CreateWindow<GameEditor>(GameEditorNames.GAME_EDITOR);
             window.position = GUIHelper.GetEditorWindowRect().AlignCenter(800, 600);
         }
 
@@ -256,6 +257,13 @@ namespace VMFramework.Editor.GameEditor
             }
             
             SirenixEditorGUI.EndHorizontalToolbar();
+        }
+
+        private void OnProjectChange()
+        {
+            GamePrefabGeneralSettingUtility.RefreshAllInitialGamePrefabWrappers();
+            
+            ForceMenuTreeRebuild();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using PVZRTS.Damage;
+﻿using PVZRTS.Damage;
 using UnityEngine;
 
 namespace PVZRTS.Entities

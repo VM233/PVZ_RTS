@@ -1,6 +1,4 @@
-﻿using Sirenix.OdinInspector;
-using UnityEngine;
-using VMFramework.GameLogicArchitecture;
+﻿using VMFramework.GameLogicArchitecture;
 using VMFramework.OdinExtensions;
 
 namespace PVZRTS.UI

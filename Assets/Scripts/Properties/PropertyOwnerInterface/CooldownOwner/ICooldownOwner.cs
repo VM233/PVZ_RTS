@@ -1,5 +1,4 @@
 ﻿using System;
-using TH.Spells;
 using VMFramework.Properties;
 
 namespace PVZRTS.Properties
