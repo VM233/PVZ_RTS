@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector.Editor;
-using Sirenix.Utilities;
 using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
@@ -143,7 +142,7 @@ namespace VMFramework.Editor.GameEditor
             tree.DefaultMenuStyle.IconSize = 24.00f;
             tree.Config.DrawSearchToolbar = true;
 
-            tree.EnumerateTree().ForEach(AddRightClickContextMenu);
+            tree.EnumerateTree().Examine(AddRightClickContextMenu);
 
             return tree;
         }

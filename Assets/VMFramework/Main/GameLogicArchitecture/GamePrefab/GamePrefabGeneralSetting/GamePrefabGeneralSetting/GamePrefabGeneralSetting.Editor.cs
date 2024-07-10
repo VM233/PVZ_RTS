@@ -1,5 +1,6 @@
 ﻿#if UNITY_EDITOR
 using Sirenix.OdinInspector;
+using VMFramework.Core;
 using VMFramework.Core.Editor;
 using VMFramework.GameLogicArchitecture.Editor;
 

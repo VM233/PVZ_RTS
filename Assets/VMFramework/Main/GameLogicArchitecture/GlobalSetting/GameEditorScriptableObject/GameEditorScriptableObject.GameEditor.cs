@@ -15,6 +15,7 @@ namespace VMFramework.GameLogicArchitecture
             yield return new(EditorNames.OPEN_IN_EXPLORER_PATH, this.OpenInExplorer);
             yield return new(EditorNames.OPEN_ASSET_IN_NEW_INSPECTOR_PATH, this.OpenInNewInspector);
             yield return new(EditorNames.OPEN_THIS_SCRIPT_PATH, this.OpenScriptOfObject);
+            yield return new(EditorNames.SELECT_THIS_SCRIPT_PATH, this.SelectScriptOfObject);
             yield return new(EditorNames.SAVE, this.EnforceSave);
         }
 

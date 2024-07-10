@@ -1,6 +1,4 @@
-﻿
-
-namespace VMFramework.OdinExtensions
+﻿namespace VMFramework.OdinExtensions
 {
     public sealed class ProcedureIDAttribute : GeneralValueDropdownAttribute
     {

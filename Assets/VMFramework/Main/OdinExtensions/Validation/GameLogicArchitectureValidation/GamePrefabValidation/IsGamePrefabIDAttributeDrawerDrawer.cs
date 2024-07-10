@@ -1,5 +1,6 @@
 ﻿#if UNITY_EDITOR
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace VMFramework.OdinExtensions
@@ -10,13 +11,10 @@ namespace VMFramework.OdinExtensions
         {
             if (value is not string id)
             {
-                yield break;
+                return Enumerable.Empty<ValidationResult>();
             }
 
-            foreach (var result in GameLogicArchitectureAttributeUtility.ValidateID(id))
-            {
-                yield return result;
-            }
+            return GameLogicArchitectureAttributeUtility.ValidateID(id);
         }
     }
 }

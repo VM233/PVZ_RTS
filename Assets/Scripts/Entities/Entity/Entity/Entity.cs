@@ -1,4 +1,5 @@
 ﻿using FishNet.Serializing;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using VMFramework.GameLogicArchitecture;
 
@@ -8,6 +9,7 @@ namespace PVZRTS.Entities
     {
         protected IEntityConfig entityConfig => (IEntityConfig)gamePrefab;
         
+        [ShowInInspector]
         public IEntityController controller { get; private set; }
 
         public GameObject prefab => entityConfig.prefab;

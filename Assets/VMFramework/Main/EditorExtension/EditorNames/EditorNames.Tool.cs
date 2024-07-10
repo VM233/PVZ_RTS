@@ -3,40 +3,44 @@ namespace VMFramework.Editor
 {
     public static partial class EditorNames
     {
-        #region Open Script
+        #region Script
 
-        public const string OPEN_SCRIPT = "Open Script";
+        public const string SCRIPT = "Script";
+        
+        public const string SELECT_THIS_SCRIPT = "Select This Script";
+        
+        public const string SELECT_THIS_SCRIPT_PATH = SCRIPT + "/" + SELECT_THIS_SCRIPT;
 
         public const string OPEN_THIS_SCRIPT = "Open This Script";
 
-        public const string OPEN_THIS_SCRIPT_PATH = OPEN_SCRIPT + "/" + OPEN_THIS_SCRIPT;
+        public const string OPEN_THIS_SCRIPT_PATH = SCRIPT + "/" + OPEN_THIS_SCRIPT;
 
         public const string OPEN_GAME_PREFAB_SCRIPT = "Open Game Prefab Script";
 
-        public const string OPEN_GAME_PREFAB_SCRIPT_PATH = OPEN_SCRIPT + "/" + OPEN_GAME_PREFAB_SCRIPT;
+        public const string OPEN_GAME_PREFAB_SCRIPT_PATH = SCRIPT + "/" + OPEN_GAME_PREFAB_SCRIPT;
 
         public const string OPEN_GAME_ITEM_SCRIPT = "Open Game Item Script";
 
-        public const string OPEN_GAME_ITEM_SCRIPT_PATH = OPEN_SCRIPT + "/" + OPEN_GAME_ITEM_SCRIPT;
+        public const string OPEN_GAME_ITEM_SCRIPT_PATH = SCRIPT + "/" + OPEN_GAME_ITEM_SCRIPT;
 
         public const string OPEN_CONTROLLER_SCRIPT = "Open Controller Script";
 
-        public const string OPEN_CONTROLLER_SCRIPT_PATH = OPEN_SCRIPT + "/" + OPEN_CONTROLLER_SCRIPT;
+        public const string OPEN_CONTROLLER_SCRIPT_PATH = SCRIPT + "/" + OPEN_CONTROLLER_SCRIPT;
 
         public const string OPEN_GLOBAL_SETTING_SCRIPT = "Open Global Setting Script";
 
-        public const string OPEN_GLOBAL_SETTING_SCRIPT_PATH = OPEN_SCRIPT + "/" + OPEN_GLOBAL_SETTING_SCRIPT;
+        public const string OPEN_GLOBAL_SETTING_SCRIPT_PATH = SCRIPT + "/" + OPEN_GLOBAL_SETTING_SCRIPT;
 
         public const string OPEN_INITIAL_GAME_PREFABS_SCRIPTS = "Open All Initial Game Prefabs Script";
 
         public const string OPEN_INITIAL_GAME_PREFABS_SCRIPTS_PATH =
-            OPEN_SCRIPT + "/" + OPEN_INITIAL_GAME_PREFABS_SCRIPTS;
+            SCRIPT + "/" + OPEN_INITIAL_GAME_PREFABS_SCRIPTS;
 
         public const string OPEN_GAME_ITEMS_OF_INITIAL_GAME_PREFABS_SCRIPTS =
             "Open All Game Items of Initial Game Prefabs Script";
 
         public const string OPEN_GAME_ITEMS_OF_INITIAL_GAME_PREFABS_SCRIPTS_PATH =
-            OPEN_SCRIPT + "/" + OPEN_GAME_ITEMS_OF_INITIAL_GAME_PREFABS_SCRIPTS;
+            SCRIPT + "/" + OPEN_GAME_ITEMS_OF_INITIAL_GAME_PREFABS_SCRIPTS;
 
         #endregion
 

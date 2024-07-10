@@ -14,6 +14,7 @@ namespace VMFramework.Timers
         private static double currentTimeDebug => _currentTime;
         
         [ShowInInspector]
+        [EnableGUI]
         private static List<ITimer> allTimers => queue.ToList();
 
         [Button]
