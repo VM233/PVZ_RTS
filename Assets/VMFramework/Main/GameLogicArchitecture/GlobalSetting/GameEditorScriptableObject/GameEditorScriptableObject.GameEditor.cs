@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if UNITY_EDITOR
+using System.Collections.Generic;
 using VMFramework.Core.Editor;
 using VMFramework.Editor;
 using VMFramework.Editor.GameEditor;
@@ -17,6 +18,10 @@ namespace VMFramework.GameLogicArchitecture
             yield return new(EditorNames.OPEN_THIS_SCRIPT_PATH, this.OpenScriptOfObject);
             yield return new(EditorNames.SELECT_THIS_SCRIPT_PATH, this.SelectScriptOfObject);
             yield return new(EditorNames.SAVE, this.EnforceSave);
+            if (this.IsAddressableAsset())
+            {
+                yield return new(EditorNames.SELECT_ADDRESSABLE_GROUP_PATH, this.SelectEntryGroupInAddressableWindow);
+            }
         }
 
         IEnumerable<ToolbarButtonConfig> IGameEditorToolbarProvider.GetToolbarButtons() =>
@@ -33,3 +38,4 @@ namespace VMFramework.GameLogicArchitecture
         }
     }
 }
+#endif

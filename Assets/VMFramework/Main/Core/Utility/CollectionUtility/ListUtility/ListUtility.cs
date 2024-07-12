@@ -22,7 +22,7 @@ namespace VMFramework.Core
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool TriGetIndex<T>(this IList<T> list, T item, out int index)
+        public static bool TryGetIndex<T>(this IList<T> list, T item, out int index)
         {
             for (int i = 0; i < list.Count; i++)
             {

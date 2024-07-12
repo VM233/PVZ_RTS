@@ -265,7 +265,7 @@ namespace VMFramework.Core
             
             var firstEndWithPart = endWithParts[0];
 
-            if (pathParts.TriGetIndex(firstEndWithPart, out var matchingIndex) == false)
+            if (pathParts.TryGetIndex(firstEndWithPart, out var matchingIndex) == false)
             {
                 matchingCount = 0;
                 return false;
@@ -286,7 +286,7 @@ namespace VMFramework.Core
                 }
                 else
                 {
-                    return false;
+                    return true;
                 }
             }
             
