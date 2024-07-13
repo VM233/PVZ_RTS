@@ -1,14 +1,16 @@
 ﻿using System;
 using FishNet.Connection;
+using Sirenix.OdinInspector;
 using VMFramework.Network;
 
 namespace PVZRTS.Entities
 {
     public partial class Entity
     {
-        public string uuid { get; private set; }
+        [ShowInInspector]
+        public Guid uuid { get; private set; }
 
-        string IUUIDOwner.uuid
+        Guid IUUIDOwner.uuid
         {
             get => uuid;
             set => uuid = value;

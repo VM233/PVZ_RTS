@@ -15,9 +15,6 @@ namespace TH.Spells
         protected ISpellConfig spellConfig => (ISpellConfig)gamePrefab;
 
         [ShowInInspector]
-        public string uuid { get; private set; }
-
-        [ShowInInspector]
         public ISpellOwner owner { get; private set; }
 
         protected override void OnDestroy()

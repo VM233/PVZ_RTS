@@ -52,14 +52,14 @@ namespace PVZRTS.Entities
         {
             base.OnWrite(writer);
             
-            writer.WriteString(shooterSpell.uuid);
+            writer.WriteGuidAllocated(shooterSpell.uuid);
         }
 
         protected override void OnRead(Reader reader)
         {
             base.OnRead(reader);
 
-            shooterSpell.TrySetUUIDAndRegister(reader.ReadString());
+            shooterSpell.TrySetUUIDAndRegister(reader.ReadGuid());
         }
 
         #endregion

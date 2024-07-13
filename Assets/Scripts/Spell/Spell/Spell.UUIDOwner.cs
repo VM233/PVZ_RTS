@@ -1,12 +1,16 @@
 ﻿using System;
 using FishNet.Connection;
+using Sirenix.OdinInspector;
 using VMFramework.Network;
 
 namespace TH.Spells
 {
     public partial class Spell
     {
-        string IUUIDOwner.uuid
+        [ShowInInspector]
+        public Guid uuid { get; private set; }
+        
+        Guid IUUIDOwner.uuid
         {
             get => uuid;
             set => uuid = value;

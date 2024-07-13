@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using FishNet.Serializing;
 using PVZRTS.Entities;
 using UnityEngine;
 using UnityEngine.Scripting;
+using VMFramework.Core.Pool;
 using VMFramework.Network;
 
 namespace TH.Spells
@@ -13,17 +15,15 @@ namespace TH.Spells
     {
         public static void WriteSpellCastInfo(this Writer writer, SpellCastInfo spellCastInfo)
         {
-            writer.WriteString(spellCastInfo.caster.uuid);
+            writer.WriteGuidAllocated(spellCastInfo.caster.uuid);
 
             writer.WriteInt32((int)spellCastInfo.targetType);
 
             if (spellCastInfo.targetType.HasFlag(SpellTargetType.Entities))
             {
-                var entitiesUUID = new List<string>();
+                var entitiesUUID = spellCastInfo.entities.Select(entity => entity.uuid).ToArray();
 
-                entitiesUUID.AddRange(spellCastInfo.entities.Select(entity => entity.uuid));
-
-                writer.WriteList(entitiesUUID);
+                writer.WriteArray(entitiesUUID);
             }
 
             if (spellCastInfo.targetType.HasFlag(SpellTargetType.Direction))
@@ -39,7 +39,7 @@ namespace TH.Spells
 
         public static SpellCastInfo ReadSpellCastInfo(this Reader reader)
         {
-            var casterUUID = reader.ReadString();
+            var casterUUID = reader.ReadGuid();
 
             if (UUIDCoreManager.TryGetOwner(casterUUID, out var casterEntity) == false)
             {
@@ -55,18 +55,22 @@ namespace TH.Spells
             if (spellTargetType.HasFlag(SpellTargetType.Entities))
             {
                 entities = new();
-                
-                var entitiesUUID = new List<string>();
 
-                reader.ReadList(ref entitiesUUID);
+                GuidArrayCache.TryGet(out var entitiesUUID);
 
-                foreach (var uuid in entitiesUUID)
+                int count = reader.ReadArray(ref entitiesUUID);
+
+                for (int i = 0; i < count; i++)
                 {
+                    var uuid = entitiesUUID[i];
+                    
                     if (UUIDCoreManager.TryGetOwner(uuid, out IEntity entity))
                     {
                         entities.Add(entity);
                     }
                 }
+                
+                GuidArrayCache.Return(entitiesUUID);
             }
 
             Vector3 mainDirection = default;

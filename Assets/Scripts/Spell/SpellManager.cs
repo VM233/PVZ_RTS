@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 using FishNet.Object;
 using PVZRTS.GameCore;
 using VMFramework.Network;
@@ -12,7 +13,7 @@ namespace TH.Spells
         #region Cast
 
         [Server]
-        private static void CastInstantaneously(string uuid, SpellCastInfo spellCastInfo)
+        private static void CastInstantaneously(Guid uuid, SpellCastInfo spellCastInfo)
         {
             if (UUIDCoreManager.TryGetOwnerWithWarning(uuid, out ISpell spell))
             {
@@ -23,7 +24,7 @@ namespace TH.Spells
         }
 
         [ServerRpc(RequireOwnership = false)]
-        private void CastRequest(string uuid, SpellCastInfo spellCastInfo)
+        private void CastRequest(Guid uuid, SpellCastInfo spellCastInfo)
         {
             CastInstantaneously(uuid, spellCastInfo);
         }

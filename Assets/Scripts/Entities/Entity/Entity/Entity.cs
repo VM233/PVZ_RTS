@@ -1,4 +1,5 @@
-﻿using FishNet.Serializing;
+﻿using System;
+using FishNet.Serializing;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using VMFramework.GameLogicArchitecture;
@@ -32,14 +33,14 @@ namespace PVZRTS.Entities
         {
             base.OnWrite(writer);
             
-            writer.WriteString(uuid);
+            writer.WriteGuidAllocated(uuid);
         }
 
         protected override void OnRead(Reader reader)
         {
             base.OnRead(reader);
             
-            uuid = reader.ReadString();
+            uuid = reader.ReadGuid();
         }
 
         #endregion

@@ -14,13 +14,13 @@ namespace PVZRTS.Entities
     [ManagerCreationProvider(nameof(GameManagerType.Entity))]
     public sealed partial class EntityManager : UUIDManager<EntityManager, IEntity>
     {
-        private static readonly List<IEntity> entitiesToDestroy = new();
+        // private static readonly List<IEntity> entitiesToDestroy = new();
 
         protected override void OnBeforeInitStart()
         {
             base.OnBeforeInitStart();
             
-            InstanceFinder.TimeManager.OnTick += OnTick;
+            // InstanceFinder.TimeManager.OnTick += OnTick;
         }
 
         [Server]
@@ -44,13 +44,14 @@ namespace PVZRTS.Entities
         [Server]
         public static void DestroyEntity(IEntity entity)
         {
-            if (entity == null)
-            {
-                Debug.LogWarning("Tried to destroy null Entity.");
-                return;
-            }
-            
-            entitiesToDestroy.Add(entity);
+            // if (entity == null)
+            // {
+            //     Debug.LogWarning("Tried to destroy null Entity.");
+            //     return;
+            // }
+            //
+            // entitiesToDestroy.Add(entity);
+            DestroyEntityImmediately(entity);
         }
 
         [Server]
@@ -58,7 +59,7 @@ namespace PVZRTS.Entities
         {
             if (UUIDCoreManager.HasUUIDWithWarning(entity.uuid))
             {
-                IGameItem.Destroy(entity);
+                // IGameItem.Destroy(entity);
 
                 entity.controller.Hide();
 
@@ -66,17 +67,17 @@ namespace PVZRTS.Entities
             }
         }
 
-        private static void OnTick()
-        {
-            if (entitiesToDestroy.Count > 0)
-            {
-                foreach (var entity in entitiesToDestroy)
-                {
-                    DestroyEntityImmediately(entity);
-                }
-                
-                entitiesToDestroy.Clear();
-            }
-        }
+        // private static void OnTick()
+        // {
+        //     if (entitiesToDestroy.Count > 0)
+        //     {
+        //         foreach (var entity in entitiesToDestroy)
+        //         {
+        //             DestroyEntityImmediately(entity);
+        //         }
+        //         
+        //         entitiesToDestroy.Clear();
+        //     }
+        // }
     }
 }
